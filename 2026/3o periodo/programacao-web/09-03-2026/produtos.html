@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos – ONG Bem-estar Animal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 20px 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover {
+            border-bottom-color: #fff;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-title h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            color: #666;
+            font-size: 1.05em;
+        }
+
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            width: calc(30% - 10px);
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            transform: translateY(-4px);
+        }
+
+        .product-badge {
+            background-color: #e07b39;
+            color: #fff;
+            font-size: 0.75em;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 0 0 6px 0;
+            position: absolute;
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            background-color: #f0ebe4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            font-size: 5em;
+        }
+
+        .product-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 8px;
+        }
+
+        .product-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .tag {
+            background-color: #f0ebe4;
+            color: #7a5c3e;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #e07b39;
+            margin-top: 6px;
+        }
+
+        .product-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .stock-info {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .btn-comprar {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn-comprar:hover {
+            background-color: #555;
+        }
+
+        .info-banner {
+            background-color: #f0ebe4;
+            border: 1px solid #ddd8d0;
+            border-radius: 5px;
+            padding: 20px 25px;
+            margin-top: 40px;
+            text-align: center;
+            color: #7a5c3e;
+        }
+
+        .info-banner p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .info-banner strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 6px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ONG Bem-estar Animal</h1>
+        <p>Compre e ajude a cuidar de quem precisa</p>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./servicos.html">Serviços</a></li>
+                <li><a href="./produtos.html">Produtos</a></li>
+                <li><a href="./adote.html">Adote um Animal</a></li>
+                <li><a href="./contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-title">
+            <h2>Nossos Produtos</h2>
+            <p>Toda a renda gerada com nossas vendas é revertida para o cuidado dos animais resgatados.</p>
+        </div>
+
+        <div class="products-grid">
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <span class="product-badge">Mais vendido</span>
+                    🦮
+                </div>
+                <div class="product-body">
+                    <p class="product-name">Coleira personalizada</p>
+                    <p class="product-description">
+                        Coleira artesanal com o nome do seu pet gravado. Resistente, confortável
+                        e produzida por voluntários da ONG.
+                    </p>
+                    <div class="product-tags">
+                        <span class="tag">Artesanal</span>
+                        <span class="tag">Cão e Gato</span>
+                    </div>
+                    <p class="product-price">R$ 35,00</p>
+                </div>
+                <div class="product-footer">
+                    <span class="stock-info">✔ Em estoque</span>
+                    <a href="./contato.html" class="btn-comprar">Comprar</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    🧸
+                </div>
+                <div class="product-body">
+                    <p class="product-name">Kit brinquedos para gatos</p>
+                    <p class="product-description">
+                        Conjunto com 4 brinquedos interativos para estimular seus gatos:
+                        arranhador, bolinha de sisal, varinha e catnip.
+                    </p>
+                    <div class="product-tags">
+                        <span class="tag">Gatos</span>
+                        <span class="tag">Kit</span>
+                    </div>
+                    <p class="product-price">R$ 55,00</p>
+                </div>
+                <div class="product-footer">
+                    <span class="stock-info">✔ Em estoque</span>
+                    <a href="./contato.html" class="btn-comprar">Comprar</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <span class="product-badge">Novidade</span>
+                    👕
+                </div>
+                <div class="product-body">
+                    <p class="product-name">Camiseta ONG Bem-estar</p>
+                    <p class="product-description">
+                        Camiseta 100% algodão com estampa exclusiva da ONG. Mostre seu apoio
+                        e ajude a divulgar nossa causa! Disponível em P, M, G e GG.
+                    </p>
+                    <div class="product-tags">
+                        <span class="tag">Roupa</span>
+                        <span class="tag">Algodão</span>
+                    </div>
+                    <p class="product-price">R$ 60,00</p>
+                </div>
+                <div class="product-footer">
+                    <span class="stock-info">✔ Em estoque</span>
+                    <a href="./contato.html" class="btn-comprar">Comprar</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    🍪
+                </div>
+                <div class="product-body">
+                    <p class="product-name">Petisco natural para cães</p>
+                    <p class="product-description">
+                        Biscoitinhos artesanais feitos com ingredientes naturais, sem conservantes.
+                        Produzidos com amor pelas voluntárias da ONG. Pacote com 300g.
+                    </p>
+                    <div class="product-tags">
+                        <span class="tag">Cães</span>
+                        <span class="tag">Natural</span>
+                        <span class="tag">Artesanal</span>
+                    </div>
+                    <p class="product-price">R$ 25,00</p>
+                </div>
+                <div class="product-footer">
+                    <span class="stock-info">✔ Em estoque</span>
+                    <a href="./contato.html" class="btn-comprar">Comprar</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    🛏️
+                </div>
+                <div class="product-body">
+                    <p class="product-name">Caminha acolchoada</p>
+                    <p class="product-description">
+                        Caminha confortável e lavável para cães de porte pequeno e médio.
+                        Tecido antialérgico com recheio de espuma de alta densidade.
+                    </p>
+                    <div class="product-tags">
+                        <span class="tag">Cães</span>
+                        <span class="tag">Antialérgico</span>
+                    </div>
+                    <p class="product-price">R$ 90,00</p>
+                </div>
+                <div class="product-footer">
+                    <span class="stock-info">⚠ Últimas unidades</span>
+                    <a href="./contato.html" class="btn-comprar">Comprar</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    🎒
+                </div>
+                <div class="product-body">
+                    <p class="product-name">Mochila transportadora</p>
+                    <p class="product-description">
+                        Mochila para transporte de pets de até 6kg. Ventilação lateral,
+                        janela de visualização e fundo emborrachado antiderrapante.
+                    </p>
+                    <div class="product-tags">
+                        <span class="tag">Cão e Gato</span>
+                        <span class="tag">Transporte</span>
+                    </div>
+                    <p class="product-price">R$ 120,00</p>
+                </div>
+                <div class="product-footer">
+                    <span class="stock-info">✔ Em estoque</span>
+                    <a href="./contato.html" class="btn-comprar">Comprar</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="info-banner">
+            <p>
+                <strong>💛 Sua compra faz a diferença!</strong>
+                100% da renda obtida com a venda dos nossos produtos é destinada ao custeio dos serviços
+                prestados pela ONG, como alimentação, medicamentos e atendimento veterinário dos animais resgatados.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Todos os direitos reservados &copy; 2026 – ONG Bem-estar Animal</p>
+    </footer>
+</body>
+</html>

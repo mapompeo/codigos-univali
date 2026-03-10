@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adoção de Pets — ONG Bem-estar Animal</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        color: #333;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 10px 0 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 6px 12px;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .pet-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 15px;
+        width: 27%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .pet-card img {
+        width: 100%;
+      }
+
+      .pet-card .nome {
+        font-weight: bold;
+        margin-top: 8px;
+      }
+
+      .pet-card .btn-adotar {
+        margin-top: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>ONG Bem-estar Animal</h1>
+      <p>Encontre o seu novo melhor amigo!</p>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./servicos.html">Serviços</a></li>
+          <li class="active"><a href="./adote.html">Adote um Animal</a></li>
+          <li><a href="./produtos.html">Produtos</a></li>
+          <li><a href="./contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="gallery">
+        <div class="pet-card">
+          <img src="./imagens/frederico.jpg" alt="Frederico" />
+          <p class="nome">Frederico</p>
+          <p>Cão amigo</p>
+          <a class="btn-adotar" href="./contato.html">Quero Adotar</a>
+        </div>
+        <div class="pet-card">
+          <img src="./imagens/felix.jpg" alt="Felix" />
+          <p class="nome">Felix</p>
+          <p>Gato amigo</p>
+          <a class="btn-adotar" href="./contato.html">Quero Adotar</a>
+        </div>
+        <div class="pet-card">
+          <img src="./imagens/jacob.jpg" alt="Jacob" />
+          <p class="nome">Jacob</p>
+          <p>Cão legal</p>
+          <a class="btn-adotar" href="./contato.html">Quero Adotar</a>
+        </div>
+        <div class="pet-card">
+          <img src="./imagens/lessie.jpg" alt="Lessie" />
+          <p class="nome">Lessie</p>
+          <p>Cão amiga</p>
+          <a class="btn-adotar" href="./contato.html">Quero Adotar</a>
+        </div>
+        <div class="pet-card">
+          <img src="./imagens/spark.jpg" alt="Spark" />
+          <p class="nome">Spark</p>
+          <p>Cão lindo</p>
+          <a class="btn-adotar" href="./contato.html">Quero Adotar</a>
+        </div>
+        <div class="pet-card">
+          <img src="./imagens/lauro.jpg" alt="Lauro" />
+          <p class="nome">Lauro</p>
+          <p>Cão amigável</p>
+          <a class="btn-adotar" href="./contato.html">Quero Adotar</a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Todos os direitos reservados &copy; 2026 — ONG Bem-estar Animal</p>
+    </footer>
+  </body>
+</html>
