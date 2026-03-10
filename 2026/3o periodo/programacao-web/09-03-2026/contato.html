@@ -1,191 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contato – ONG Bem-estar Animal</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 30px 20px 10px;
-            text-align: center;
-        }
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 30px 20px 10px;
+        text-align: center;
+      }
 
-        header h1 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
+      header h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+      }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding-bottom: 15px;
-            flex-wrap: wrap;
-        }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding-bottom: 15px;
+        flex-wrap: wrap;
+      }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1em;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.2s;
-        }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1em;
+        padding: 5px 0;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s;
+      }
 
-        nav a:hover {
-            border-bottom-color: #fff;
-        }
+      nav a:hover {
+        border-bottom-color: #fff;
+      }
 
-        main {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+      main {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
 
-        .form-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-            padding: 35px;
-        }
+      .form-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        padding: 35px;
+      }
 
-        .form-card h2 {
-            margin-bottom: 25px;
-            font-size: 1.5em;
-            color: #333;
-        }
+      .form-card h2 {
+        margin-bottom: 25px;
+        font-size: 1.5em;
+        color: #333;
+      }
 
-        .form-group {
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+      .form-group {
+        margin-bottom: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
 
-        label {
-            font-weight: bold;
-            font-size: 0.95em;
-        }
+      label {
+        font-weight: bold;
+        font-size: 0.95em;
+      }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1em;
-            font-family: Arial, sans-serif;
-            outline: none;
-            transition: border-color 0.2s;
-        }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1em;
+        font-family: Arial, sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+      }
 
-        input:focus,
-        textarea:focus {
-            border-color: #333;
-        }
+      input:focus,
+      textarea:focus {
+        border-color: #333;
+      }
 
-        textarea {
-            resize: vertical;
-        }
+      textarea {
+        resize: vertical;
+      }
 
-        input[type="submit"] {
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 4px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 8px;
-        }
+      input[type="submit"] {
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: 8px;
+      }
 
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
+      input[type="submit"]:hover {
+        background-color: #555;
+      }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9em;
-        }
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        font-size: 0.9em;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>ONG Bem-estar Animal</h1>
-        <nav>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./servicos.html">Serviços</a></li>
-                <li><a href="./produtos.html">Produtos</a></li>
-                <li><a href="./adote.html">Adote um Animal</a></li>
-                <li><a href="./contato.html">Contato</a></li>
-            </ul>
-        </nav>
+      <h1>ONG Bem-estar Animal</h1>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./servicos.html">Serviços</a></li>
+          <li><a href="./produtos.html">Produtos</a></li>
+          <li><a href="./adote.html">Adote um Animal</a></li>
+          <li><a href="./contato.html">Contato</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <div class="form-card">
-            <h2>Entre em contato com nossa equipe</h2>
-            <form>
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
-                </div>
+      <div class="form-card">
+        <h2>Entre em contato com nossa equipe</h2>
+        <form>
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              required
+              placeholder="Seu nome completo"
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="seu@email.com"
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" name="telefone" required
-                        pattern="[0-9]{10,11}" placeholder="Somente números (DDD + número)">
-                </div>
+          <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input
+              type="tel"
+              id="telefone"
+              name="telefone"
+              required
+              pattern="[0-9]{10,11}"
+              placeholder="Somente números (DDD + número)"
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="cpf">CPF:</label>
-                    <input type="text" id="cpf" name="cpf" required
-                        pattern="[0-9]{11}" placeholder="Somente números (11 dígitos)">
-                </div>
+          <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input
+              type="text"
+              id="cpf"
+              name="cpf"
+              required
+              pattern="[0-9]{11}"
+              placeholder="Somente números (11 dígitos)"
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="mensagem">Mensagem:</label>
-                    <textarea id="mensagem" name="mensagem" rows="5" required
-                        placeholder="Escreva sua mensagem aqui..."></textarea>
-                </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem:</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="5"
+              required
+              placeholder="Escreva sua mensagem aqui..."
+            ></textarea>
+          </div>
 
-                <input type="submit" value="Enviar Mensagem">
-            </form>
-        </div>
+          <input type="submit" value="Enviar Mensagem" />
+        </form>
+      </div>
     </main>
 
     <footer>
-        <p>Todos os direitos reservados &copy; 2026 – ONG Bem-estar Animal</p>
+      <p>Todos os direitos reservados &copy; 2026 – ONG Bem-estar Animal</p>
     </footer>
-</body>
+  </body>
 </html>
