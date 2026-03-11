@@ -25,6 +25,28 @@ int main()
     removerUltimoDaLista(lista);
     cout << "Lista apos remover o ultimo elemento: ";
     imprimirListaSimples(lista);
+    
+    cout << "\n--- inserirOrdenado ---" << endl;
+    inserirOrdenado(lista, 50);
+    inserirOrdenado(lista, 10);
+    inserirOrdenado(lista, 30);
+    cout << "Lista apos inserir 50, 10, 30 (esperado: 10 -> 30 -> 50): ";
+    imprimirListaSimples(lista);
+
+    cout << "\n--- contarNos ---" << endl;
+    int total = contarNos(lista);
+    cout << "Total de nos na lista: " << total << endl;
+
+    cout << "\n--- inverterLista ---" << endl;
+    cout << "Lista antes de inverter: ";
+    imprimirListaSimples(lista);
+    inverterLista(lista);
+    cout << "Lista apos inverter (esperado: 50 -> 30 -> 10): ";
+    imprimirListaSimples(lista);
+
+    cout << "\n--- liberarLista ---" << endl;
+    liberarLista(lista);
+    cout << "Lista liberada com sucesso." << endl;
 
     return 0;
 }

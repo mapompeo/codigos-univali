@@ -80,3 +80,33 @@ void removerUltimoDaLista(ListaSimples *lista)
     free(temp->proximo);
     temp->proximo = NULL;
 }
+
+void inserirOrdenado(ListaSimples *lista, int valor)
+{
+    No *no = _criandoNo(valor);
+
+    No *atual = lista->inicio;
+
+    while (atual->proximo->valor > valor && (atual->proximo != NULL && atual->proximo->valor < valor))
+    {
+        atual = atual->proximo;
+    }
+}
+
+int contarNos(ListaSimples *lista)
+{
+    return 0;
+}
+
+No *buscarNo(ListaSimples *lista, int valor)
+{
+    return NULL;
+}
+
+void inverterLista(ListaSimples *lista)
+{
+}
+
+void liberarLista(ListaSimples *lista)
+{
+}

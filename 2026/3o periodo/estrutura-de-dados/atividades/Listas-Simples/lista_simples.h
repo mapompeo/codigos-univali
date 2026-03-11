@@ -16,12 +16,16 @@ typedef struct ListaSimples
 } ListaSimples;
 
 ListaSimples *criaListaSimples();
-void imprimirListaSimples(ListaSimples *lista);
+void adicionarInicioDaListaSimples(ListaSimples *ListaSimples, int valor);
+void imprimirListaSimples(ListaSimples *ListaSimples);
+
+void removerUltimoDaLista(ListaSimples *ListaSimples);
+void adicionarFinalDaLista(ListaSimples *ListaSimples, int valor);
 
 void inserirOrdenado(ListaSimples *lista, int valor);
 int contarNos(ListaSimples *lista);
 No *buscarNo(ListaSimples *lista, int valor);
 void inverterLista(ListaSimples *lista);
-void liberarLista(ListaSimples *lista, int valor);
+void liberarLista(ListaSimples *lista);
 
 #endif
