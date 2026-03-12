@@ -18,21 +18,23 @@ ListaSimples *criaListaSimples()
     return lista;
 }
 
-void adicionarInicioDaListaSimples(ListaSimples *ListaSimples, int valor)
+void adicionarInicioDaListaSimples(ListaSimples *lista, int valor)
 {
     No *no = _criandoNo(valor);
 
-    no->proximo = ListaSimples->inicio;
-    ListaSimples->inicio = no;
+    no->proximo = lista->inicio;
+    lista->inicio = no;
 }
 
-void imprimirListaSimples(ListaSimples *ListaSimples)
+void imprimirListaSimples(ListaSimples *lista)
 {
-    No *no = ListaSimples->inicio;
+    No *no = lista->inicio;
 
     while (no != NULL)
     {
-        cout << no->valor << " ";
+        cout << no->valor;
+        if (no->proximo != NULL)
+            cout << " -> ";
         no = no->proximo;
     }
     cout << endl;
@@ -83,30 +85,74 @@ void removerUltimoDaLista(ListaSimples *lista)
 
 void inserirOrdenado(ListaSimples *lista, int valor)
 {
-    No *no = _criandoNo(valor);
+    No *novoNo = _criandoNo(valor);
+
+    if (lista->inicio == NULL || valor < lista->inicio->valor)
+    {
+        novoNo->proximo = lista->inicio;
+        lista->inicio = novoNo;
+        return;
+    }
 
     No *atual = lista->inicio;
-
-    while (atual->proximo->valor > valor && (atual->proximo != NULL && atual->proximo->valor < valor))
+    while (atual->proximo != NULL && atual->proximo->valor < valor)
     {
         atual = atual->proximo;
     }
+
+    novoNo->proximo = atual->proximo;
+    atual->proximo = novoNo;
 }
 
 int contarNos(ListaSimples *lista)
 {
-    return 0;
+    int count = 0;
+    No *atual = lista->inicio;
+    while (atual != NULL)
+    {
+        count++;
+        atual = atual->proximo;
+    }
+    return count;
 }
 
 No *buscarNo(ListaSimples *lista, int valor)
 {
+    No *atual = lista->inicio;
+    while (atual != NULL)
+    {
+        if (atual->valor == valor)
+            return atual;
+        atual = atual->proximo;
+    }
     return NULL;
 }
 
 void inverterLista(ListaSimples *lista)
 {
+    No *anterior = NULL;
+    No *atual = lista->inicio;
+    No *proximo = NULL;
+
+    while (atual != NULL)
+    {
+        proximo = atual->proximo;
+        atual->proximo = anterior;
+        anterior = atual;
+        atual = proximo;
+    }
+
+    lista->inicio = anterior;
 }
 
 void liberarLista(ListaSimples *lista)
 {
+    No *atual = lista->inicio;
+    while (atual != NULL)
+    {
+        No *proximo = atual->proximo;
+        free(atual);
+        atual = proximo;
+    }
+    free(lista);
 }

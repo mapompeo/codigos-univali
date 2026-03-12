@@ -4,23 +4,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct No
+using namespace std;
+
+struct No
 {
     int valor;
-    struct No *proximo;
-} No;
+    No *proximo;
+};
 
-typedef struct ListaSimples
+struct ListaSimples
 {
     No *inicio;
-} ListaSimples;
+};
 
 ListaSimples *criaListaSimples();
-void adicionarInicioDaListaSimples(ListaSimples *ListaSimples, int valor);
-void imprimirListaSimples(ListaSimples *ListaSimples);
+void adicionarInicioDaListaSimples(ListaSimples *lista, int valor);
+void imprimirListaSimples(ListaSimples *lista);
 
-void removerUltimoDaLista(ListaSimples *ListaSimples);
-void adicionarFinalDaLista(ListaSimples *ListaSimples, int valor);
+void removerUltimoDaLista(ListaSimples *lista);
+void adicionarFinalDaLista(ListaSimples *lista, int valor);
 
 void inserirOrdenado(ListaSimples *lista, int valor);
 int contarNos(ListaSimples *lista);
