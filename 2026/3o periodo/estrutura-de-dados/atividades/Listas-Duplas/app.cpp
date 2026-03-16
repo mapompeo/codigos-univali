@@ -28,6 +28,17 @@ void inserir_inicio(ListaControle *lista, int data)
 
 void inserir_fim(ListaControle *lista, int data)
 {
+    No *novo = (No *)calloc(1, sizeof(No));
+    novo->data = data;
+    novo->next = nullptr;
+    novo->prev = lista->cauda;
+
+    if (lista->cauda != nullptr)
+        lista->cauda->next = novo;
+    else
+        lista->cabeca = novo;
+
+    lista->cauda = novo;
 }
 
 void exibir_direto(ListaControle *lista)
@@ -45,50 +56,57 @@ void exibir_direto(ListaControle *lista)
 
 void exibir_inverso(ListaControle *lista)
 {
+    No *no = lista->cauda;
+    while (no != nullptr)
+    {
+        cout << no->data;
+        if (no->prev != nullptr)
+            cout << " -> ";
+        no = no->prev;
+    }
+    cout << endl;
 }
 
 void limpar_lista(ListaControle *lista)
 {
-    No *cabeca = lista->cabeca;
     No *atual = lista->cabeca;
-
-    while (true)
+    while (atual != nullptr)
     {
+        No *proximo = atual->next;
         delete atual;
-
-        atual = cabeca->next;
-        cabeca = cabeca->next;
-
-        if (atual == nullptr)
-        {
-            return;
-        }
+        atual = proximo;
     }
+    lista->cabeca = nullptr;
+    lista->cauda = nullptr;
 }
 
 int main()
 {
     ListaControle *lista = iniciar_lista();
 
-    inserir_inicio(lista, 4);
-    inserir_inicio(lista, 1);
-    inserir_inicio(lista, 9);
-    inserir_fim(lista, 3);
-    inserir_fim(lista, 7);
-
-    cout << "inserir_inicio: 4, 1, 9  |  inserir_fim: 3, 7" << endl;
-    cout << endl;
-
-    cout << "exibir_direto: ";
+    inserir_fim(lista, 10);
+    inserir_fim(lista, 20);
+    cout << "depois de inserir_fim(10) e inserir_fim(20): ";
     exibir_direto(lista);
-    cout << endl;
 
-    cout << "exibir_inverso: ";
+    inserir_inicio(lista, 5);
+    inserir_inicio(lista, 2);
+
+    cout << "\ndireto  (esperado 2 5 10 20): ";
+    exibir_direto(lista);
+    cout << "inverso (esperado 20 10 5 2): ";
     exibir_inverso(lista);
-    cout << endl;
 
-    cout << "limpar_lista: memoria liberada" << endl;
     limpar_lista(lista);
+    cout << "\ncabeca apos limpar: " << lista->cabeca << " (deve ser 0)" << endl;
 
+    cout << "\nlista vazia - direto:  ";
+    exibir_direto(lista);
+    cout << "lista vazia - inverso: ";
+    exibir_inverso(lista);
+
+    cout << "\nsem crash = passou!" << endl;
+
+    delete lista;
     return 0;
 }
