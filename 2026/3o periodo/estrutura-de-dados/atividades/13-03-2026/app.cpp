@@ -1,51 +1,50 @@
 #include <iostream>
+#include <cstdlib>
+#include "app.h"
 using namespace std;
-
-struct No
-{
-    int valor;
-    No *prev;
-    No *next;
-};
-struct ListaControle
-{
-    No *cabeca;
-};
 
 ListaControle *iniciar_lista()
 {
     ListaControle *lista = (ListaControle *)calloc(1, sizeof(ListaControle));
-    No *no = (No *)calloc(1, sizeof(No));
-    no->prev = nullptr;
-
-    lista->cabeca = no;
-
+    lista->cabeca = nullptr;
+    lista->cauda = nullptr;
     return lista;
 }
 
 void inserir_inicio(ListaControle *lista, int data)
 {
-    No *novo_no = (No *)calloc(1, sizeof(No));
-    No *cabeca = lista->cabeca;
+    No *novo = (No *)calloc(1, sizeof(No));
+    novo->data = data;
+    novo->prev = nullptr;
+    novo->next = lista->cabeca;
 
-    novo_no->valor = data;
-    novo_no->next = cabeca;
-    novo_no->prev = nullptr;
-    
-    cabeca->prev = novo_no;
-    
+    if (lista->cabeca != nullptr)
+        lista->cabeca->prev = novo;
+    else
+        lista->cauda = novo;
+
+    lista->cabeca = novo;
+}
+
+void inserir_fim(ListaControle *lista, int data)
+{
 }
 
 void exibir_direto(ListaControle *lista)
 {
     No *no = lista->cabeca;
-
-    while (no->prev != nullptr)
+    while (no != nullptr)
     {
-        cout << no->valor << " -> ";
-
+        cout << no->data;
+        if (no->next != nullptr)
+            cout << " -> ";
         no = no->next;
     }
+    cout << endl;
+}
+
+void exibir_inverso(ListaControle *lista)
+{
 }
 
 void limpar_lista(ListaControle *lista)
@@ -69,13 +68,27 @@ void limpar_lista(ListaControle *lista)
 
 int main()
 {
-    ListaControle *lista;
+    ListaControle *lista = iniciar_lista();
 
     inserir_inicio(lista, 4);
     inserir_inicio(lista, 1);
     inserir_inicio(lista, 9);
-    inserir_inicio(lista, 3);
-    inserir_inicio(lista, 4);
+    inserir_fim(lista, 3);
+    inserir_fim(lista, 7);
 
+    cout << "inserir_inicio: 4, 1, 9  |  inserir_fim: 3, 7" << endl;
+    cout << endl;
+
+    cout << "exibir_direto: ";
     exibir_direto(lista);
+    cout << endl;
+
+    cout << "exibir_inverso: ";
+    exibir_inverso(lista);
+    cout << endl;
+
+    cout << "limpar_lista: memoria liberada" << endl;
+    limpar_lista(lista);
+
+    return 0;
 }
