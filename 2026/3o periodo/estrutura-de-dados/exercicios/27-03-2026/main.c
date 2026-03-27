@@ -21,12 +21,12 @@ typedef struct TabelaHash
     No *dados[tamanho];
 } TabelaHash;
 
-int funcaoHash(chave)
+int funcaoHash(int chave)
 {
     return chave % tamanho;
 }
 
-int inserirExterior(TabelaHash *tabela, Aluno alunoNovo)
+void inserirExterior(TabelaHash *tabela, Aluno alunoNovo)
 {
     int id = funcaoHash(alunoNovo.matricula);
     No *novoNo = (No *)calloc(1, sizeof(No));
@@ -34,7 +34,23 @@ int inserirExterior(TabelaHash *tabela, Aluno alunoNovo)
     novoNo->proximo = tabela->dados[id];
     tabela->dados[id] = novoNo;
 
-    printf("ALuno %s inserido no índice %d (exterior)\n", alunoNovo.nome[id]);
+    printf("Aluno %s inserido no indice %d (exterior)\n", alunoNovo.nome, id);
+}
+
+void exibirTabelaHash(TabelaHash *tabela)
+{
+    for (int i = 0; i < tamanho; i++)
+    {
+        printf("Posicao [%d]: ", i);
+
+        No *atual = tabela->dados[i];
+        while (atual != NULL)
+        {
+            printf("{%d, %s} -> ", atual->aluno.matricula, atual->aluno.nome);
+            atual = atual->proximo;
+        }
+        printf("NULL\n");
+    }
 }
 
 int main()
@@ -42,9 +58,14 @@ int main()
     TabelaHash *tabela = (TabelaHash *)calloc(1, sizeof(TabelaHash));
 
     Aluno joao = {123, "joao"};
-    Aluno alice = {30, "alice"};
-    Aluno cleber = {10, "cleber"};
-    Aluno josias = {45, "josias"};
+    Aluno alice = {12, "alice"};
+    Aluno cleber = {23, "cleber"};
+    Aluno josias = {10, "josias"};
+
+    inserirExterior(tabela, joao);
+    inserirExterior(tabela, alice);
+    inserirExterior(tabela, cleber);
+    inserirExterior(tabela, josias);
 
     return 0;
 }
