@@ -53,6 +53,22 @@ void exibirTabelaHash(TabelaHash *tabela)
     }
 }
 
+Aluno *buscaExterior(TabelaHash *tabela, int matricula)
+{
+    int id = funcaoHash(matricula);
+
+    No *atual = tabela->dados[id];
+
+    while (atual != NULL)
+    {
+        if (atual->aluno.matricula == matricula)
+            return &(atual->aluno);
+
+        atual = atual->proximo;
+    }
+    return NULL;
+}
+
 int main()
 {
     TabelaHash *tabela = (TabelaHash *)calloc(1, sizeof(TabelaHash));
@@ -66,6 +82,14 @@ int main()
     inserirExterior(tabela, alice);
     inserirExterior(tabela, cleber);
     inserirExterior(tabela, josias);
+
+    exibirTabelaHash(tabela);
+
+    Aluno *buscaDaAlice = buscaExterior(tabela, 12);
+    Aluno *buscaNulo = buscaExterior(tabela, 5678);
+
+    printf("[Mat: %d | Nome: %s]\n", buscaDaAlice->matricula, buscaDaAlice->nome);
+    printf("[Mat: ", buscaDaAlice->matricula, " | Nome: ", buscaDaAlice->nome, "]");
 
     return 0;
 }
