@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos</title>
+    <script src="assets/scripts/produtos.js" defer></script>
+    <link rel="stylesheet" href="assets/styles/style.css">
+  </head>
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td>Havaianas</td>
+          <td>
+            <input
+              type="number"
+              name=""
+              id="havaianasQtd"
+              onchange="atualizarPreco('havaianas')"
+            />
+          </td>
+          <td id="havaianasPreco">R$0,00</td>
+        </tr>
+        <tr>
+          <td>Alpargatas</td>
+          <td>
+            <input
+              type="number"
+              name=""
+              id="alpargatasQtd"
+              onchange="atualizarPreco('alpargatas')"
+            />
+          </td>
+          <td id="alpargatasPreco">R$0,00</td>
+        </tr>
+      </table>
+      <button onclick="salvarProdutos()">Salvar</button>
+    </div>
+  </body>
+</html>
