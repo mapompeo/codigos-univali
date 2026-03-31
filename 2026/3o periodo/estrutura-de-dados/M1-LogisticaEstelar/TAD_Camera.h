@@ -19,6 +19,6 @@ struct ListaCameras
 };
 
 void inserirCamera(ListaCameras *lista, int id, string local);
-void removerCamera(ListaCameras *lista, int id);
+void removerCamera(ListaCameras *lista, string local);
 
 #endif

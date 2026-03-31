@@ -314,25 +314,22 @@ void DesenharModuloCameras()
     }
     if (DrawButton({550, 520, 150, 50}, "Remover", RED))
     {
-        int id = 0;
         if (inputTexto.length() > 0)
         {
-            id = safeStoi(inputTexto, 0);
+            string loc = inputTexto;
+            removerCamera(&listaCameras, loc);
+            ultimaMensagem = "Tentativa de remover Câmera (local: " + loc + ")";
         }
         else if (listaCameras.head != nullptr)
         {
-            // Se o usuário clicar em "Remover" sem digitar nada, removemos o head (facilita o teste)
-            id = listaCameras.head->id;
-        }
-
-        if (id > 0)
-        {
-            removerCamera(&listaCameras, id);
-            ultimaMensagem = "Tentativa de remover Câmera (id: " + to_string(id) + ")";
+            // Se não digitar nada, remove a cabeça automaticamente para facilitar
+            string loc = listaCameras.head->local;
+            removerCamera(&listaCameras, loc);
+            ultimaMensagem = "Remoção automática da Câmera (local: " + loc + ")";
         }
         else
         {
-            ultimaMensagem = "Lista já está vazia ou ID inválido.";
+            ultimaMensagem = "Lista já está vazia ou local não encontrado.";
         }
 
         inputTexto = "";
