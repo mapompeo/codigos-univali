@@ -6,7 +6,6 @@
 
 Este repositório serve como um local centralizado para armazenar todos os arquivos criados durante o curso de Ciência da Computação. Ele abrange uma ampla gama de tecnologias e conceitos essenciais que são ensinados ao longo do curso, proporcionando aos alunos uma referência valiosa e um espaço organizado para acessar e compartilhar seu trabalho.
 
-
 ## Organização do Repositório
 
 - Estrutura em pastas por ano/período/disciplina/atividade
@@ -33,11 +32,9 @@ Este repositório serve como um local centralizado para armazenar todos os arqui
 4. Siga os padrões definidos no `.gitignore`
 5. Faça pull requests claros e objetivos
 
-
 ## Objetivo
 
 O objetivo principal deste repositório é proporcionar aos alunos e instrutores do curso um local centralizado para acessar, compartilhar e colaborar em projetos e exercícios relacionados à programação, lógica, arquitetura de computadores, web e demais áreas do curso. O repositório consolida o aprendizado, fornece exemplos práticos e demonstra a evolução das habilidades ao longo do tempo.
-
 
 ---
 
