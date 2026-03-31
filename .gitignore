@@ -1,0 +1,59 @@
+# .gitignore para repositório de códigos universitários
+# Abrange C, C++, projetos com CMake, VSCode, arquivos temporários e binários
+
+# Build e binários
+build/
+*/build/
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+*.so
+*.a
+*.lib
+*.app
+*.bin
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+install_manifest.txt
+Testing/
+
+# VSCode
+.vscode/
+
+# Arquivos temporários e de sistema
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Dependências baixadas por gerenciadores
+node_modules/
+__pycache__/
+
+# Arquivos de backup
+*.bak
+*.old
+*.orig
+*.save
+
+# Outros
+*.user
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
