@@ -3,267 +3,172 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Serviços – ONG Bem-estar Animal</title>
+    <title>Serviços — ONG Bem-estar Animal</title>
     <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
       body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
+        margin: 0;
         color: #333;
       }
 
       header {
         background-color: #333;
         color: #fff;
-        padding: 30px 20px 10px;
         text-align: center;
-      }
-
-      header h1 {
-        font-size: 2em;
-        margin-bottom: 5px;
-      }
-
-      header p {
-        color: #ccc;
-        margin-bottom: 15px;
+        padding: 20px;
       }
 
       nav ul {
         list-style: none;
+        margin: 10px 0 0;
+        padding: 0;
         display: flex;
         justify-content: center;
-        gap: 30px;
-        padding-bottom: 15px;
+        gap: 10px;
         flex-wrap: wrap;
       }
 
       nav a {
         color: #fff;
         text-decoration: none;
-        font-size: 1em;
-        padding: 5px 0;
-        border-bottom: 2px solid transparent;
-        transition: border-color 0.2s;
+        padding: 6px 12px;
       }
 
       nav a:hover {
-        border-bottom-color: #fff;
+        text-decoration: underline;
       }
 
       main {
-        max-width: 1100px;
-        margin: 40px auto;
-        padding: 0 20px;
-      }
-
-      .page-title {
-        text-align: center;
-        margin-bottom: 35px;
-      }
-
-      .page-title h2 {
-        font-size: 1.8em;
-        color: #333;
-        margin-bottom: 10px;
-      }
-
-      .page-title p {
-        color: #666;
-        font-size: 1.05em;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 0 15px;
       }
 
       .services-grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 25px;
+        justify-content: space-around;
+        gap: 15px;
       }
 
       .service-card {
         background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        padding: 30px 25px;
-        width: calc(33% - 20px);
-        min-width: 250px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition:
-          box-shadow 0.2s,
-          transform 0.2s;
-      }
-
-      .service-card:hover {
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-        transform: translateY(-3px);
-      }
-
-      .service-icon {
-        font-size: 3em;
-        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        width: 44%;
       }
 
       .service-card h3 {
-        font-size: 1.15em;
-        margin-bottom: 12px;
-        color: #333;
+        margin-top: 0;
       }
 
       .service-card p {
-        color: #666;
-        font-size: 0.95em;
         line-height: 1.6;
       }
 
-      .cta-section {
-        background-color: #333;
-        color: #fff;
-        border-radius: 5px;
-        text-align: center;
-        padding: 40px 30px;
-        margin-top: 40px;
-      }
-
-      .cta-section h2 {
-        font-size: 1.5em;
-        margin-bottom: 12px;
-      }
-
-      .cta-section p {
-        color: #ccc;
-        margin-bottom: 20px;
-      }
-
-      .btn {
-        display: inline-block;
-        background-color: #fff;
-        color: #333;
-        text-decoration: none;
-        padding: 10px 25px;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.2s;
-      }
-
-      .btn:hover {
-        background-color: #ddd;
+      .service-tag {
+        font-size: 0.85em;
+        color: #666;
       }
 
       footer {
         background-color: #333;
         color: #fff;
         text-align: center;
-        padding: 20px;
-        margin-top: 40px;
-        font-size: 0.9em;
+        padding: 15px;
+        margin-top: 20px;
       }
     </style>
   </head>
   <body>
     <header>
       <h1>ONG Bem-estar Animal</h1>
-      <p>Cuidamos de quem não pode falar por si</p>
       <nav>
         <ul>
           <li><a href="./index.html">Home</a></li>
-          <li><a href="./servicos.html">Serviços</a></li>
-          <li><a href="./produtos.html">Produtos</a></li>
+          <li class="active"><a href="./servicos.html">Serviços</a></li>
           <li><a href="./adote.html">Adote um Animal</a></li>
+          <li><a href="./produtos.html">Produtos</a></li>
           <li><a href="./contato.html">Contato</a></li>
         </ul>
       </nav>
     </header>
-
     <main>
-      <div class="page-title">
-        <h2>Nossos Serviços</h2>
-        <p>
-          Conheça tudo o que fazemos para garantir o bem-estar dos animais
-          resgatados.
-        </p>
-      </div>
+      <h2>Nossos Serviços</h2>
 
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">🐾</div>
-          <h3>Resgate de Animais</h3>
+          <h3>🐾 Resgate de Animais</h3>
           <p>
-            Realizamos resgates de animais em situação de abandono e maus-tratos
-            nas ruas da cidade, garantindo socorro imediato e seguro.
+            Nossa equipe realiza resgates de animais em situação de risco nas
+            ruas da cidade, oferecendo abrigo, alimentação e os primeiros
+            cuidados necessários para a recuperação e bem-estar dos animais
+            resgatados.
           </p>
+          <span class="service-tag">Gratuito</span>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">🏥</div>
-          <h3>Cuidados de Saúde</h3>
+          <h3>🏥 Cuidados de Saúde</h3>
           <p>
-            Oferecemos atendimento veterinário completo para os animais
-            resgatados, incluindo consultas, exames, cirurgias e acompanhamento
-            pós-operatório.
+            Contamos com veterinários voluntários que realizam consultas,
+            exames, tratamentos e cirurgias para garantir a saúde dos animais
+            sob nossos cuidados. Todos os animais recebem tratamento completo
+            antes de serem disponibilizados para adoção.
           </p>
+          <span class="service-tag">Gratuito</span>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">🏠</div>
-          <h3>Adoção Responsável</h3>
+          <h3>❤️ Adoção Responsável</h3>
           <p>
-            Trabalhamos para encontrar lares amorosos para nossos animais, com
-            processo de adoção criterioso que garante o bem-estar do pet
-            adotado.
+            Promovemos a adoção consciente e responsável de animais resgatados.
+            Realizamos entrevistas, visita domiciliar e acompanhamento
+            pós-adoção para garantir que cada animal encontre um lar amoroso e
+            seguro.
           </p>
+          <span class="service-tag">Gratuito</span>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">✂️</div>
-          <h3>Campanhas de Castração</h3>
+          <h3>✂️ Campanhas de Castração</h3>
           <p>
-            Realizamos campanhas periódicas de castração a preços acessíveis,
-            contribuindo para o controle responsável da população de animais de
-            rua.
+            Realizamos periodicamente campanhas de castração gratuita ou
+            subsidiada para animais de famílias de baixa renda, contribuindo
+            para o controle populacional de animais abandonados nas ruas.
           </p>
+          <span class="service-tag">Subsidiado</span>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">💉</div>
-          <h3>Vacinação e Vermifugação</h3>
+          <h3>💉 Vacinação</h3>
           <p>
-            Aplicamos vacinas essenciais e realizamos vermifugações em todos os
-            animais sob nossos cuidados, prevenindo doenças e mantendo-os
-            saudáveis.
+            Organizamos feiras e mutirões de vacinação para prevenir doenças
+            como raiva, cinomose e parvovirose. A vacinação em massa é
+            fundamental para a proteção tanto dos animais quanto da população
+            humana.
           </p>
+          <span class="service-tag">Subsidiado</span>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">📚</div>
-          <h3>Educação e Conscientização</h3>
+          <h3>🏠 Lar Temporário</h3>
           <p>
-            Promovemos palestras e oficinas em escolas e comunidades para
-            conscientizar sobre o cuidado responsável com animais domésticos.
+            Conectamos animais resgatados a famílias voluntárias que oferecem um
+            lar temporário enquanto aguardam a adoção definitiva. Esse programa
+            é essencial para a socialização e recuperação emocional dos animais.
           </p>
+          <span class="service-tag">Voluntariado</span>
         </div>
       </div>
 
-      <div class="cta-section">
-        <h2>Quer apoiar nossa causa?</h2>
-        <p>
-          Entre em contato conosco e descubra como você pode ajudar os animais
-          resgatados.
-        </p>
-        <a href="./contato.html" class="btn">Fale Conosco</a>
-      </div>
+      <p style="margin-top: 20px;">
+        Quer apoiar nosso trabalho? <a href="./contato.html">Entre em contato conosco.</a>
+      </p>
     </main>
-
     <footer>
-      <p>Todos os direitos reservados &copy; 2026 – ONG Bem-estar Animal</p>
+      <p>Todos os direitos reservados &copy; 2026 — ONG Bem-estar Animal</p>
     </footer>
   </body>
 </html>
