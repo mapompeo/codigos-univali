@@ -1,0 +1,13 @@
+package br.univali.cc.financas;
+
+public class TipoGasto {
+    private String descricao;
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+}

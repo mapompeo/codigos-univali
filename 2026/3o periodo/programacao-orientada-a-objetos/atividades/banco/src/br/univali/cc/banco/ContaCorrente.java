@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContaCorrente {
-    private boolean especial;
-    private double limite;
-    private int numero;
+    final private boolean especial;
+    final private double limite;
+    final private int numero;
     private double saldo;
-    private List<Movimentacao> movimentacoes;
+    final private List<Movimentacao> movimentacoes;
 
     public ContaCorrente(int numero, double saldoInicial) {
         this.numero = numero;
@@ -33,7 +33,8 @@ public class ContaCorrente {
     }
 
     protected boolean depositar(double valor) {
-        if (valor <= 0) return false;
+        if (valor <= 0)
+            return false;
         saldo += valor;
         criarMovimentacao("depósito", 'C', valor);
         return true;
@@ -44,7 +45,8 @@ public class ContaCorrente {
         sb.append("======================================\n");
         sb.append("  extrato - conta nº ").append(numero).append("\n");
         sb.append("  tipo: ").append(especial ? "especial" : "normal").append("\n");
-        if (especial) sb.append("  limite: R$ ").append(String.format("%.2f", limite)).append("\n");
+        if (especial)
+            sb.append("  limite: R$ ").append(String.format("%.2f", limite)).append("\n");
         sb.append("======================================\n");
         for (Movimentacao mov : movimentacoes) {
             sb.append("  ").append(mov.getMovimentacao()).append("\n");
@@ -64,7 +66,8 @@ public class ContaCorrente {
     }
 
     protected boolean sacar(double valor) {
-        if (valor <= 0) return false;
+        if (valor <= 0)
+            return false;
         if (valor > saldo + limite) {
             System.out.println("saldo insuficiente. disponível: R$ " + String.format("%.2f", saldo + limite));
             return false;
