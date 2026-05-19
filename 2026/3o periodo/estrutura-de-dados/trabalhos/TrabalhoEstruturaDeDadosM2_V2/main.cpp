@@ -1,6 +1,7 @@
 #include "arvorebmais.h"
 
-int main() {
+int main()
+{
     ArvoreBMais arvore(3);
 
     arvore.inserir(1);
