@@ -1,5 +1,5 @@
 -- =============================================================================
---  ALU.vhd  --  Unidade Lógica e Aritmética  --  RISC-V 32-bit Monociclo
+--  ULA.vhd  --  Unidade Lógica e Aritmética  --  RISC-V 32-bit Monociclo
 -- =============================================================================
 --
 --  Operações (op):
@@ -25,14 +25,14 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity design is
+entity ULA is
 port (i_a, i_b : in std_logic_vector(31 downto 0);
       i_sel : in std_logic_vector(3 downto 0);
-      o_data : out std_logic_vector(31 downto 0);
+      o_res : out std_logic_vector(31 downto 0);
       o_zero : out std_logic);
-end design;
+end ULA;
 
-architecture qualquernome of design is
+architecture comportamental of ULA is
     signal w_res : std_logic_vector(31 downto 0);
     signal w_shamt : integer range 0 to 31;
 begin
@@ -67,6 +67,6 @@ begin
         end case;
     end process;
 
-    o_data <= w_res;
+    o_res <= w_res;
     o_zero <= '1' when w_res = (w_res'range => '0') else '0';
-end qualquernome;
+end comportamental;

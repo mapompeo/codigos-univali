@@ -12,7 +12,7 @@ architecture qualquernome of testbench is
     signal w_zero : std_logic;
 
 begin
-    DUT : entity work.design
+    DUT : entity work.ULA
     port map (w_a, w_b, w_sel, w_data, w_zero);
 
     process
