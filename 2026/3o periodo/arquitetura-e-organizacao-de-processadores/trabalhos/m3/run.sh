@@ -5,4 +5,4 @@ export CPLUS_INCLUDE_PATH=/usr/share/Riviera-PRO/interfaces/include
 export EDATOOL=riviera
 export ALDEC_LICENSE_FILE=27009@10.116.0.5
 export HOME=/home/runner
-vlib work && vcom '-2019' '-o' MUX41.vhd SOMADOR.vhd SUBTRATOR.vhd ULA.vhd testbench.vhd  && vsim -c -do "vsim testbench; run -all; exit"  ; echo 'Creating result.zip...' && zip -r /tmp/tmp_zip_file_123play.zip . && mv /tmp/tmp_zip_file_123play.zip result.zip
+vlib work && vcom '-2019' '-o' MUX41.vhd SOMADOR.vhd SUBTRATOR.vhd DESLOCADOR.vhd ULA.vhd testbench.vhd  && vsim -c -do "vsim testbench; run -all; exit"  ; echo 'Creating result.zip...' && zip -r /tmp/tmp_zip_file_123play.zip . && mv /tmp/tmp_zip_file_123play.zip result.zip

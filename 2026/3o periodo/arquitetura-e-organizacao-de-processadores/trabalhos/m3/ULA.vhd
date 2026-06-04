@@ -10,15 +10,6 @@
 --  Saídas:
 --    res  : resultado de 32 bits
 --    zero : '1' quando res = 0  (usado por BEQ/BNE)
---
--- Funções úteis: 
---   SLL : std_logic_vector(shift_left (unsigned(i_a), shamt))
---   SRL : std_logic_vector(shift_right (unsigned(i_a), shamt))
---   SRA : std_logic_vector(shift_right (signed(i_a), shamt))
---
--- Dicas: 
--- SLT : res 1 quando a < b (com sinal)
--- SLTU : res 1 quando a < b (sem sinal)
 -- =============================================================================
 
 library ieee;
@@ -32,41 +23,63 @@ port (i_a, i_b : in std_logic_vector(31 downto 0);
       o_zero : out std_logic);
 end ULA;
 
-architecture comportamental of ULA is
-    signal w_res : std_logic_vector(31 downto 0);
-    signal w_shamt : integer range 0 to 31;
+architecture estrutural of ULA is
+    signal w_SOMA   : std_logic_vector(31 downto 0);
+    signal w_SUB    : std_logic_vector(31 downto 0);
+    signal w_AND    : std_logic_vector(31 downto 0);
+    signal w_OR     : std_logic_vector(31 downto 0);
+    signal w_XOR    : std_logic_vector(31 downto 0);
+    signal w_SLL    : std_logic_vector(31 downto 0);
+    signal w_SRL    : std_logic_vector(31 downto 0);
+    signal w_SRA    : std_logic_vector(31 downto 0);
+    signal w_SLT    : std_logic_vector(31 downto 0);
+    signal w_SLTU   : std_logic_vector(31 downto 0);
+    signal w_shamt  : integer range 0 to 31;
 begin
     w_shamt <= to_integer(unsigned(i_b(4 downto 0)));
 
-    process(i_a, i_b, i_sel, w_shamt)
+    u_SOMADOR : entity work.SOMADOR
+    port map(i_a, i_b, w_SOMA);
+
+    u_SUBTRATOR : entity work.SUBTRATOR
+    port map(i_a, i_b, w_SUB);
+
+    w_AND <= i_a and i_b;
+    w_OR  <= i_a or i_b;
+    w_XOR <= i_a xor i_b;
+
+    u_SLL : entity work.DESLOCADOR
+    generic map("00")
+    port map(i_a, w_shamt, w_SLL);
+
+    u_SRL : entity work.DESLOCADOR
+    generic map("01")
+    port map(i_a, w_shamt, w_SRL);
+
+    u_SRA : entity work.DESLOCADOR
+    generic map("10")
+    port map(i_a, w_shamt, w_SRA);
+
+    w_SLT  <= (0 => '1', others => '0') when signed(i_a) < signed(i_b) else (others => '0');
+    w_SLTU <= (0 => '1', others => '0') when unsigned(i_a) < unsigned(i_b) else (others => '0');
+
+    process(i_sel, w_SOMA, w_SUB, w_AND, w_OR, w_XOR,
+            w_SLL, w_SRL, w_SRA, w_SLT, w_SLTU)
     begin
         case i_sel is
-            when "0000" => w_res <= std_logic_vector(signed(i_a) + signed(i_b));
-            when "0001" => w_res <= std_logic_vector(signed(i_a) - signed(i_b));
-            when "0010" => w_res <= i_a and i_b;
-            when "0011" => w_res <= i_a or i_b;
-            when "0100" => w_res <= i_a xor i_b;
-            when "0101" => w_res <= std_logic_vector(shift_left(unsigned(i_a), w_shamt));
-            when "0110" => w_res <= std_logic_vector(shift_right(unsigned(i_a), w_shamt));
-            when "0111" => w_res <= std_logic_vector(shift_right(signed(i_a), w_shamt));
-            when "1000" =>
-                if signed(i_a) < signed(i_b) then
-                    w_res <= (others => '0');
-                    w_res(0) <= '1';
-                else
-                    w_res <= (others => '0');
-                end if;
-            when "1001" =>
-                if unsigned(i_a) < unsigned(i_b) then
-                    w_res <= (others => '0');
-                    w_res(0) <= '1';
-                else
-                    w_res <= (others => '0');
-                end if;
-            when others => w_res <= (others => '0');
+            when "0000" => o_res <= w_SOMA;
+            when "0001" => o_res <= w_SUB;
+            when "0010" => o_res <= w_AND;
+            when "0011" => o_res <= w_OR;
+            when "0100" => o_res <= w_XOR;
+            when "0101" => o_res <= w_SLL;
+            when "0110" => o_res <= w_SRL;
+            when "0111" => o_res <= w_SRA;
+            when "1000" => o_res <= w_SLT;
+            when "1001" => o_res <= w_SLTU;
+            when others => o_res <= (others => '0');
         end case;
     end process;
 
-    o_res <= w_res;
-    o_zero <= '1' when w_res = (w_res'range => '0') else '0';
-end comportamental;
+    o_zero <= '1' when o_res = (o_res'range => '0') else '0';
+end estrutural;
