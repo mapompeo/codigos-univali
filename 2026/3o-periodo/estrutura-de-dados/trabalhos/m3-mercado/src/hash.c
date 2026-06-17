@@ -24,7 +24,8 @@ void hash_destruir(TabelaHash *h) {
 }
 
 int hash_funcao(TabelaHash *h, int codigo) {
-    return codigo % h->tamanho;
+    int idx = codigo % h->tamanho;
+    return (idx < 0) ? idx + h->tamanho : idx;
 }
 
 int hash_inserir(TabelaHash *h, Produto p) {
