@@ -1,0 +1,1000 @@
+1000;Arroz Tipo 1;23.86;102;02;04;2026
+1001;Feijao Tipo 1;93.80;158;28;06;2026
+1002;Acucar Tipo 1;61.44;21;14;02;2026
+1003;Sal Tipo 1;75.34;116;08;02;2026
+1004;Oleo de Soja Tipo 1;87.48;185;22;06;2026
+1005;Leite Integral Tipo 1;9.72;80;28;06;2026
+1006;Manteiga Tipo 1;3.48;83;14;06;2026
+1007;Queijo Mussarela Tipo 1;84.82;85;08;02;2026
+1008;Iogurte Natural Tipo 1;68.46;141;06;04;2026
+1009;Cream Cheese Tipo 1;69.98;164;20;02;2026
+1010;Margarina Tipo 1;51.00;133;18;04;2026
+1011;Requeijao Tipo 1;27.62;110;16;02;2026
+1012;Creme de Leite Tipo 1;67.10;48;06;06;2026
+1013;Leite Condensado Tipo 1;51.86;78;20;06;2026
+1014;Frango Inteiro Tipo 1;67.90;129;10;04;2026
+1015;Peito de Frango Tipo 1;61.18;153;20;02;2026
+1016;Carne Moida Tipo 1;25.06;55;02;06;2026
+1017;Picanha Tipo 1;15.68;97;08;06;2026
+1018;Linguica Calabresa Tipo 1;33.50;35;26;06;2026
+1019;Salsicha Tipo 1;58.28;178;04;04;2026
+1020;Presunto Fatiado Tipo 1;45.88;105;14;06;2026
+1021;Bacon Tipo 1;27.46;84;16;04;2026
+1022;File de Salmao Tipo 1;90.00;29;18;06;2026
+1023;Atum em Lata Tipo 1;77.10;168;24;02;2026
+1024;Sardinha em Lata Tipo 1;20.14;33;22;02;2026
+1025;Pao de Forma Tipo 1;4.80;14;12;06;2026
+1026;Biscoito Recheado Tipo 1;96.16;13;22;04;2026
+1027;Biscoito de Agua Tipo 1;70.72;164;16;04;2026
+1028;Macarrao Espaguete Tipo 1;82.36;53;14;04;2026
+1029;Farinha de Trigo Tipo 1;70.00;57;28;04;2026
+1030;Fermento Biologico Tipo 1;32.16;49;26;04;2026
+1031;Tomate Tipo 1;38.66;91;20;04;2026
+1032;Cebola Tipo 1;8.56;136;14;02;2026
+1033;Alho Tipo 1;90.58;169;28;02;2026
+1034;Batata Tipo 1;14.76;23;10;02;2026
+1035;Cenoura Tipo 1;35.46;10;12;02;2026
+1036;Alface Tipo 1;76.32;137;02;02;2026
+1037;Brocolis Tipo 1;25.82;153;24;02;2026
+1038;Couve Tipo 1;78.28;59;22;04;2026
+1039;Espinafre Tipo 1;68.60;91;08;06;2026
+1040;Abobrinha Tipo 1;46.32;84;26;04;2026
+1041;Maca Gala Tipo 1;71.72;14;28;06;2026
+1042;Banana Prata Tipo 1;53.08;95;26;02;2026
+1043;Laranja Pera Tipo 1;16.16;79;28;02;2026
+1044;Uva Italia Tipo 1;41.84;136;22;04;2026
+1045;Pera Williams Tipo 1;65.14;42;24;06;2026
+1046;Mamao Tipo 1;94.24;194;06;02;2026
+1047;Melancia Tipo 1;38.26;53;12;04;2026
+1048;Abacate Tipo 1;63.26;64;10;04;2026
+1049;Agua Mineral Tipo 1;90.24;65;08;04;2026
+1050;Refrigerante Cola Tipo 1;13.92;76;06;02;2026
+1051;Refrigerante Guarana Tipo 1;72.12;193;12;06;2026
+1052;Suco de Laranja Tipo 1;74.70;39;06;04;2026
+1053;Suco de Uva Tipo 1;97.06;164;24;04;2026
+1054;Cerveja Lata Tipo 1;24.48;68;14;02;2026
+1055;Vinho Tinto Tipo 1;81.10;70;04;06;2026
+1056;Cafe Moido Tipo 1;96.94;113;18;02;2026
+1057;Cha Verde Tipo 1;27.04;58;08;04;2026
+1058;Achocolatado Tipo 1;38.54;100;14;06;2026
+1059;Sabonete Tipo 1;11.24;44;12;06;2026
+1060;Shampoo Tipo 1;47.02;111;14;02;2026
+1061;Condicionador Tipo 1;62.06;157;12;06;2026
+1062;Pasta de Dente Tipo 1;80.42;89;10;04;2026
+1063;Detergente Liquido Tipo 1;85.76;98;20;04;2026
+1064;Desinfetante Tipo 1;78.20;96;18;02;2026
+1065;Agua Sanitaria Tipo 1;67.46;95;08;04;2026
+1066;Sabao em Po Tipo 1;54.26;162;22;02;2026
+1067;Papel Higienico Tipo 1;79.10;17;24;02;2026
+1068;Toalha de Papel Tipo 1;81.60;85;06;04;2026
+1069;Guardanapo Tipo 1;81.54;128;08;06;2026
+1070;Fralda Tipo 1;83.98;188;02;06;2026
+1071;Absorvente Tipo 1;79.48;154;12;02;2026
+1072;Cotonete Tipo 1;45.60;176;14;04;2026
+1073;Chocolate ao Leite Tipo 1;57.66;174;12;06;2026
+1074;Chocolate Amargo Tipo 1;34.36;74;02;06;2026
+1075;Sorvete Tipo 1;3.40;22;12;02;2026
+1076;Geleia Tipo 1;97.02;139;10;06;2026
+1077;Mel Puro Tipo 1;61.24;21;28;04;2026
+1078;Ketchup Tipo 1;52.58;157;02;02;2026
+1079;Mostarda Tipo 1;13.66;140;28;04;2026
+1080;Maionese Tipo 1;80.52;175;18;02;2026
+1081;Azeite de Oliva Tipo 1;50.74;108;12;06;2026
+1082;Vinagre Tipo 1;30.68;104;22;02;2026
+1083;Molho de Tomate Tipo 1;14.42;199;24;06;2026
+1084;Extrato de Tomate Tipo 1;28.66;66;18;04;2026
+1085;Pizza Congelada Tipo 1;35.78;80;28;04;2026
+1086;Lasanha Congelada Tipo 1;56.18;178;22;06;2026
+1087;Hamburguer Congelado Tipo 1;49.78;166;04;06;2026
+1088;Batata Frita Congelada Tipo 1;27.52;125;22;04;2026
+1089;Nuggets de Frango Tipo 1;53.12;54;24;04;2026
+1090;Ervilha em Lata Tipo 1;69.54;65;18;02;2026
+1091;Milho em Lata Tipo 1;52.16;191;08;06;2026
+1092;Palmito Tipo 1;88.60;192;02;06;2026
+1093;Cereal Matinal Tipo 1;25.70;151;12;06;2026
+1094;Aveia Tipo 1;41.72;147;10;06;2026
+1095;Granola Tipo 1;7.00;36;24;04;2026
+1096;Arroz Tipo 2;66.48;143;14;04;2026
+1097;Feijao Tipo 2;83.16;109;12;06;2026
+1098;Acucar Tipo 2;54.24;116;10;06;2026
+1099;Sal Tipo 2;45.68;62;24;04;2026
+1100;Oleo de Soja Tipo 2;18.22;54;14;04;2026
+1101;Leite Integral Tipo 2;56.90;42;16;06;2026
+1102;Manteiga Tipo 2;80.16;181;06;04;2026
+1103;Queijo Mussarela Tipo 2;64.10;166;08;06;2026
+1104;Iogurte Natural Tipo 2;23.52;27;22;02;2026
+1105;Cream Cheese Tipo 2;41.06;119;28;02;2026
+1106;Margarina Tipo 2;90.16;130;18;02;2026
+1107;Requeijao Tipo 2;43.20;99;12;02;2026
+1108;Creme de Leite Tipo 2;82.64;38;18;06;2026
+1109;Leite Condensado Tipo 2;63.14;30;24;04;2026
+1110;Frango Inteiro Tipo 2;73.98;89;18;06;2026
+1111;Peito de Frango Tipo 2;5.50;115;12;04;2026
+1112;Carne Moida Tipo 2;53.50;167;22;04;2026
+1113;Picanha Tipo 2;7.94;105;16;04;2026
+1114;Linguica Calabresa Tipo 2;81.60;10;22;04;2026
+1115;Salsicha Tipo 2;88.58;121;20;02;2026
+1116;Presunto Fatiado Tipo 2;69.70;189;14;02;2026
+1117;Bacon Tipo 2;16.14;38;28;06;2026
+1118;File de Salmao Tipo 2;95.14;92;26;06;2026
+1119;Atum em Lata Tipo 2;46.72;179;20;04;2026
+1120;Sardinha em Lata Tipo 2;9.56;61;18;06;2026
+1121;Pao de Forma Tipo 2;70.28;50;04;06;2026
+1122;Biscoito Recheado Tipo 2;37.44;137;22;04;2026
+1123;Biscoito de Agua Tipo 2;26.32;148;24;02;2026
+1124;Macarrao Espaguete Tipo 2;31.08;64;26;04;2026
+1125;Farinha de Trigo Tipo 2;81.40;120;24;06;2026
+1126;Fermento Biologico Tipo 2;47.12;103;22;04;2026
+1127;Tomate Tipo 2;86.98;54;28;06;2026
+1128;Cebola Tipo 2;73.58;78;02;04;2026
+1129;Alho Tipo 2;53.44;68;12;02;2026
+1130;Batata Tipo 2;38.54;158;02;02;2026
+1131;Cenoura Tipo 2;34.52;70;28;04;2026
+1132;Alface Tipo 2;2.66;194;02;04;2026
+1133;Brocolis Tipo 2;72.38;79;28;04;2026
+1134;Couve Tipo 2;54.92;87;18;02;2026
+1135;Espinafre Tipo 2;14.56;107;08;06;2026
+1136;Abobrinha Tipo 2;54.24;158;10;06;2026
+1137;Maca Gala Tipo 2;35.18;44;08;06;2026
+1138;Banana Prata Tipo 2;68.76;132;06;02;2026
+1139;Laranja Pera Tipo 2;46.46;44;20;06;2026
+1140;Uva Italia Tipo 2;11.10;196;10;04;2026
+1141;Pera Williams Tipo 2;74.38;84;20;06;2026
+1142;Mamao Tipo 2;23.02;39;26;02;2026
+1143;Melancia Tipo 2;31.90;127;16;06;2026
+1144;Abacate Tipo 2;10.90;10;26;06;2026
+1145;Agua Mineral Tipo 2;98.62;38;12;02;2026
+1146;Refrigerante Cola Tipo 2;40.98;45;22;04;2026
+1147;Refrigerante Guarana Tipo 2;81.98;53;28;04;2026
+1148;Suco de Laranja Tipo 2;93.28;198;02;02;2026
+1149;Suco de Uva Tipo 2;61.12;53;28;04;2026
+1150;Cerveja Lata Tipo 2;5.94;50;06;04;2026
+1151;Vinho Tinto Tipo 2;70.60;89;24;02;2026
+1152;Cafe Moido Tipo 2;71.76;104;06;06;2026
+1153;Cha Verde Tipo 2;91.78;50;16;04;2026
+1154;Achocolatado Tipo 2;89.60;38;14;02;2026
+1155;Sabonete Tipo 2;65.64;200;08;06;2026
+1156;Shampoo Tipo 2;10.38;90;10;04;2026
+1157;Condicionador Tipo 2;83.16;57;12;02;2026
+1158;Pasta de Dente Tipo 2;32.68;28;02;02;2026
+1159;Detergente Liquido Tipo 2;5.86;44;04;06;2026
+1160;Desinfetante Tipo 2;56.72;40;06;02;2026
+1161;Agua Sanitaria Tipo 2;89.06;189;24;02;2026
+1162;Sabao em Po Tipo 2;4.98;179;18;06;2026
+1163;Papel Higienico Tipo 2;8.56;157;28;06;2026
+1164;Toalha de Papel Tipo 2;73.34;82;18;06;2026
+1165;Guardanapo Tipo 2;8.00;129;12;04;2026
+1166;Fralda Tipo 2;87.28;168;18;02;2026
+1167;Absorvente Tipo 2;72.50;60;20;06;2026
+1168;Cotonete Tipo 2;68.96;10;02;04;2026
+1169;Chocolate ao Leite Tipo 2;27.26;19;08;06;2026
+1170;Chocolate Amargo Tipo 2;20.02;15;14;02;2026
+1171;Sorvete Tipo 2;67.04;142;12;06;2026
+1172;Geleia Tipo 2;44.34;43;06;04;2026
+1173;Mel Puro Tipo 2;20.44;51;12;04;2026
+1174;Ketchup Tipo 2;30.76;100;18;04;2026
+1175;Mostarda Tipo 2;65.52;112;12;06;2026
+1176;Maionese Tipo 2;78.92;100;26;06;2026
+1177;Azeite de Oliva Tipo 2;89.00;168;28;06;2026
+1178;Vinagre Tipo 2;30.16;78;26;06;2026
+1179;Molho de Tomate Tipo 2;48.48;155;12;06;2026
+1180;Extrato de Tomate Tipo 2;40.32;30;14;06;2026
+1181;Pizza Congelada Tipo 2;50.74;162;24;04;2026
+1182;Lasanha Congelada Tipo 2;17.14;145;14;06;2026
+1183;Hamburguer Congelado Tipo 2;16.02;170;12;02;2026
+1184;Batata Frita Congelada Tipo 2;21.80;33;26;04;2026
+1185;Nuggets de Frango Tipo 2;33.38;58;24;06;2026
+1186;Ervilha em Lata Tipo 2;74.30;188;26;04;2026
+1187;Milho em Lata Tipo 2;2.96;103;20;02;2026
+1188;Palmito Tipo 2;19.46;60;02;02;2026
+1189;Cereal Matinal Tipo 2;34.52;190;12;04;2026
+1190;Aveia Tipo 2;57.98;15;26;04;2026
+1191;Granola Tipo 2;74.26;155;04;04;2026
+1192;Arroz Premium;90.06;43;02;06;2026
+1193;Feijao Premium;8.28;116;08;02;2026
+1194;Acucar Premium;22.86;70;02;04;2026
+1195;Sal Premium;93.14;79;12;04;2026
+1196;Oleo de Soja Premium;28.22;125;14;02;2026
+1197;Leite Integral Premium;10.26;163;28;04;2026
+1198;Manteiga Premium;67.84;135;14;04;2026
+1199;Queijo Mussarela Premium;87.06;152;28;04;2026
+1200;Iogurte Natural Premium;96.38;104;26;04;2026
+1201;Cream Cheese Premium;4.54;26;04;04;2026
+1202;Margarina Premium;39.26;199;26;04;2026
+1203;Requeijao Premium;87.32;171;08;04;2026
+1204;Creme de Leite Premium;6.34;89;26;04;2026
+1205;Leite Condensado Premium;47.82;115;08;06;2026
+1206;Frango Inteiro Premium;33.26;174;06;04;2026
+1207;Peito de Frango Premium;26.98;153;08;02;2026
+1208;Carne Moida Premium;91.26;194;22;02;2026
+1209;Picanha Premium;18.36;95;20;04;2026
+1210;Linguica Calabresa Premium;20.94;22;06;04;2026
+1211;Salsicha Premium;93.98;139;20;04;2026
+1212;Presunto Fatiado Premium;72.76;92;02;06;2026
+1213;Bacon Premium;60.02;20;08;02;2026
+1214;File de Salmao Premium;90.82;44;18;06;2026
+1215;Atum em Lata Premium;50.64;167;12;06;2026
+1216;Sardinha em Lata Premium;11.90;31;10;02;2026
+1217;Pao de Forma Premium;51.30;166;24;04;2026
+1218;Biscoito Recheado Premium;15.38;118;18;06;2026
+1219;Biscoito de Agua Premium;41.68;164;24;02;2026
+1220;Macarrao Espaguete Premium;70.72;146;06;02;2026
+1221;Farinha de Trigo Premium;29.94;174;08;04;2026
+1222;Fermento Biologico Premium;59.08;135;10;02;2026
+1223;Tomate Premium;17.80;132;12;02;2026
+1224;Cebola Premium;7.30;35;26;04;2026
+1225;Alho Premium;90.84;44;04;02;2026
+1226;Batata Premium;63.98;82;14;02;2026
+1227;Cenoura Premium;75.64;165;16;06;2026
+1228;Alface Premium;3.22;69;10;02;2026
+1229;Brocolis Premium;30.66;71;04;02;2026
+1230;Couve Premium;30.16;59;06;02;2026
+1231;Espinafre Premium;76.36;128;20;04;2026
+1232;Abobrinha Premium;67.70;72;14;02;2026
+1233;Maca Gala Premium;32.32;113;20;02;2026
+1234;Banana Prata Premium;72.26;193;22;02;2026
+1235;Laranja Pera Premium;18.20;34;24;02;2026
+1236;Uva Italia Premium;7.00;146;06;06;2026
+1237;Pera Williams Premium;36.54;144;28;06;2026
+1238;Mamao Premium;90.10;119;26;06;2026
+1239;Melancia Premium;31.90;17;20;02;2026
+1240;Abacate Premium;24.58;93;26;06;2026
+1241;Agua Mineral Premium;68.94;58;08;02;2026
+1242;Refrigerante Cola Premium;11.14;106;10;02;2026
+1243;Refrigerante Guarana Premium;77.34;143;28;04;2026
+1244;Suco de Laranja Premium;60.04;174;14;06;2026
+1245;Suco de Uva Premium;85.92;193;04;04;2026
+1246;Cerveja Lata Premium;65.54;53;26;04;2026
+1247;Vinho Tinto Premium;43.04;16;04;06;2026
+1248;Cafe Moido Premium;18.72;46;26;02;2026
+1249;Cha Verde Premium;15.84;143;20;04;2026
+1250;Achocolatado Premium;53.62;101;06;02;2026
+1251;Sabonete Premium;66.68;139;08;04;2026
+1252;Shampoo Premium;85.64;138;18;06;2026
+1253;Condicionador Premium;72.96;193;16;04;2026
+1254;Pasta de Dente Premium;95.56;77;18;02;2026
+1255;Detergente Liquido Premium;49.60;80;24;02;2026
+1256;Desinfetante Premium;6.12;199;10;06;2026
+1257;Agua Sanitaria Premium;57.50;43;16;06;2026
+1258;Sabao em Po Premium;80.70;84;02;02;2026
+1259;Papel Higienico Premium;35.94;127;28;04;2026
+1260;Toalha de Papel Premium;88.80;108;10;04;2026
+1261;Guardanapo Premium;20.70;15;16;06;2026
+1262;Fralda Premium;79.28;11;02;04;2026
+1263;Absorvente Premium;84.54;115;16;06;2026
+1264;Cotonete Premium;57.08;53;18;06;2026
+1265;Chocolate ao Leite Premium;45.80;115;20;04;2026
+1266;Chocolate Amargo Premium;45.36;57;14;06;2026
+1267;Sorvete Premium;11.04;38;24;04;2026
+1268;Geleia Premium;39.28;195;10;06;2026
+1269;Mel Puro Premium;35.60;131;24;04;2026
+1270;Ketchup Premium;39.84;197;06;02;2026
+1271;Mostarda Premium;98.40;44;12;06;2026
+1272;Maionese Premium;31.10;149;26;06;2026
+1273;Azeite de Oliva Premium;59.00;83;16;02;2026
+1274;Vinagre Premium;96.08;52;10;02;2026
+1275;Molho de Tomate Premium;78.44;92;24;04;2026
+1276;Extrato de Tomate Premium;21.14;22;14;06;2026
+1277;Pizza Congelada Premium;34.48;189;20;06;2026
+1278;Lasanha Congelada Premium;46.34;30;10;04;2026
+1279;Hamburguer Congelado Premium;63.38;35;28;02;2026
+1280;Batata Frita Congelada Premium;70.96;92;02;02;2026
+1281;Nuggets de Frango Premium;83.22;59;12;02;2026
+1282;Ervilha em Lata Premium;69.90;175;22;06;2026
+1283;Milho em Lata Premium;34.32;122;08;04;2026
+1284;Palmito Premium;31.16;186;26;06;2026
+1285;Cereal Matinal Premium;89.06;115;20;04;2026
+1286;Aveia Premium;77.46;81;18;06;2026
+1287;Granola Premium;70.84;126;12;04;2026
+1288;Arroz Light;43.74;145;10;04;2026
+1289;Feijao Light;19.02;117;28;02;2026
+1290;Acucar Light;44.82;180;22;06;2026
+1291;Sal Light;79.94;103;12;06;2026
+1292;Oleo de Soja Light;30.88;10;10;06;2026
+1293;Leite Integral Light;55.40;76;16;06;2026
+1294;Manteiga Light;8.30;84;10;02;2026
+1295;Queijo Mussarela Light;32.22;49;16;02;2026
+1296;Iogurte Natural Light;21.74;39;26;04;2026
+1297;Cream Cheese Light;12.78;36;16;06;2026
+1298;Margarina Light;27.86;86;22;02;2026
+1299;Requeijao Light;48.22;130;12;04;2026
+1300;Creme de Leite Light;70.12;26;02;04;2026
+1301;Leite Condensado Light;94.00;135;20;02;2026
+1302;Frango Inteiro Light;13.54;119;10;02;2026
+1303;Peito de Frango Light;75.62;104;28;02;2026
+1304;Carne Moida Light;87.48;163;18;04;2026
+1305;Picanha Light;73.28;196;20;04;2026
+1306;Linguica Calabresa Light;52.56;133;10;02;2026
+1307;Salsicha Light;8.18;124;16;06;2026
+1308;Presunto Fatiado Light;65.96;43;06;06;2026
+1309;Bacon Light;52.20;170;20;06;2026
+1310;File de Salmao Light;47.34;46;18;06;2026
+1311;Atum em Lata Light;32.28;160;28;04;2026
+1312;Sardinha em Lata Light;28.34;117;22;02;2026
+1313;Pao de Forma Light;97.72;131;28;06;2026
+1314;Biscoito Recheado Light;81.48;62;26;04;2026
+1315;Biscoito de Agua Light;50.50;82;24;04;2026
+1316;Macarrao Espaguete Light;17.18;102;26;06;2026
+1317;Farinha de Trigo Light;29.74;146;28;02;2026
+1318;Fermento Biologico Light;64.36;71;18;04;2026
+1319;Tomate Light;21.58;15;28;06;2026
+1320;Cebola Light;25.34;34;10;04;2026
+1321;Alho Light;60.14;101;16;06;2026
+1322;Batata Light;97.12;70;10;02;2026
+1323;Cenoura Light;66.50;18;12;04;2026
+1324;Alface Light;17.42;160;26;06;2026
+1325;Brocolis Light;86.26;56;12;02;2026
+1326;Couve Light;45.78;114;26;02;2026
+1327;Espinafre Light;9.00;57;04;06;2026
+1328;Abobrinha Light;61.86;22;22;06;2026
+1329;Maca Gala Light;89.48;137;24;04;2026
+1330;Banana Prata Light;43.60;149;06;02;2026
+1331;Laranja Pera Light;14.62;66;20;06;2026
+1332;Uva Italia Light;66.46;171;14;02;2026
+1333;Pera Williams Light;65.74;171;24;06;2026
+1334;Mamao Light;70.78;147;06;02;2026
+1335;Melancia Light;79.18;177;08;06;2026
+1336;Abacate Light;79.46;105;18;02;2026
+1337;Agua Mineral Light;53.56;41;20;06;2026
+1338;Refrigerante Cola Light;99.42;27;26;06;2026
+1339;Refrigerante Guarana Light;17.92;142;20;06;2026
+1340;Suco de Laranja Light;63.94;174;14;02;2026
+1341;Suco de Uva Light;90.58;195;28;02;2026
+1342;Cerveja Lata Light;50.06;194;18;06;2026
+1343;Vinho Tinto Light;91.38;114;12;02;2026
+1344;Cafe Moido Light;36.50;135;02;06;2026
+1345;Cha Verde Light;46.58;172;16;06;2026
+1346;Achocolatado Light;86.18;35;22;06;2026
+1347;Sabonete Light;97.60;113;08;02;2026
+1348;Shampoo Light;88.70;58;22;06;2026
+1349;Condicionador Light;93.54;132;04;06;2026
+1350;Pasta de Dente Light;89.82;118;14;06;2026
+1351;Detergente Liquido Light;95.50;65;12;06;2026
+1352;Desinfetante Light;51.10;27;10;06;2026
+1353;Agua Sanitaria Light;96.62;21;08;04;2026
+1354;Sabao em Po Light;20.98;174;22;04;2026
+1355;Papel Higienico Light;4.02;179;08;02;2026
+1356;Toalha de Papel Light;86.84;135;26;06;2026
+1357;Guardanapo Light;64.78;161;12;06;2026
+1358;Fralda Light;4.26;47;06;04;2026
+1359;Absorvente Light;13.56;31;04;04;2026
+1360;Cotonete Light;82.62;141;18;02;2026
+1361;Chocolate ao Leite Light;22.68;40;16;02;2026
+1362;Chocolate Amargo Light;38.36;115;10;04;2026
+1363;Sorvete Light;87.62;131;12;06;2026
+1364;Geleia Light;21.26;60;26;04;2026
+1365;Mel Puro Light;97.32;63;28;02;2026
+1366;Ketchup Light;50.12;161;18;02;2026
+1367;Mostarda Light;81.74;177;04;06;2026
+1368;Maionese Light;55.18;136;10;04;2026
+1369;Azeite de Oliva Light;84.58;48;16;04;2026
+1370;Vinagre Light;13.46;176;06;06;2026
+1371;Molho de Tomate Light;90.04;93;28;02;2026
+1372;Extrato de Tomate Light;8.04;36;14;04;2026
+1373;Pizza Congelada Light;3.62;88;24;04;2026
+1374;Lasanha Congelada Light;16.58;141;22;06;2026
+1375;Hamburguer Congelado Light;63.80;24;24;04;2026
+1376;Batata Frita Congelada Light;78.68;94;10;02;2026
+1377;Nuggets de Frango Light;40.56;17;16;04;2026
+1378;Ervilha em Lata Light;36.36;132;10;02;2026
+1379;Milho em Lata Light;34.48;162;04;04;2026
+1380;Palmito Light;63.12;13;06;06;2026
+1381;Cereal Matinal Light;82.42;88;28;02;2026
+1382;Aveia Light;18.42;80;18;02;2026
+1383;Granola Light;18.22;190;20;04;2026
+1384;Arroz Zero Lactose;52.22;116;22;06;2026
+1385;Feijao Zero Lactose;70.24;94;04;02;2026
+1386;Acucar Zero Lactose;28.66;192;18;04;2026
+1387;Sal Zero Lactose;17.84;151;16;06;2026
+1388;Oleo de Soja Zero Lactose;63.12;129;14;02;2026
+1389;Leite Integral Zero Lactose;39.96;90;12;02;2026
+1390;Manteiga Zero Lactose;66.84;101;14;04;2026
+1391;Queijo Mussarela Zero Lactose;38.00;142;28;06;2026
+1392;Iogurte Natural Zero Lactose;41.24;28;14;02;2026
+1393;Cream Cheese Zero Lactose;92.12;131;20;04;2026
+1394;Margarina Zero Lactose;62.00;88;10;06;2026
+1395;Requeijao Zero Lactose;80.62;81;04;06;2026
+1396;Creme de Leite Zero Lactose;44.42;34;02;06;2026
+1397;Leite Condensado Zero Lactose;68.76;39;12;02;2026
+1398;Frango Inteiro Zero Lactose;82.62;41;14;04;2026
+1399;Peito de Frango Zero Lactose;49.38;40;16;06;2026
+1400;Carne Moida Zero Lactose;69.36;79;22;02;2026
+1401;Picanha Zero Lactose;56.08;199;12;02;2026
+1402;Linguica Calabresa Zero Lactose;85.00;111;22;04;2026
+1403;Salsicha Zero Lactose;11.92;115;04;04;2026
+1404;Presunto Fatiado Zero Lactose;86.22;183;26;06;2026
+1405;Bacon Zero Lactose;9.30;55;28;04;2026
+1406;File de Salmao Zero Lactose;6.48;171;22;06;2026
+1407;Atum em Lata Zero Lactose;91.18;17;16;06;2026
+1408;Sardinha em Lata Zero Lactose;34.04;155;06;02;2026
+1409;Pao de Forma Zero Lactose;40.88;96;04;02;2026
+1410;Biscoito Recheado Zero Lactose;72.80;75;10;02;2026
+1411;Biscoito de Agua Zero Lactose;64.54;132;20;06;2026
+1412;Macarrao Espaguete Zero Lactose;30.90;139;14;02;2026
+1413;Farinha de Trigo Zero Lactose;97.42;29;08;02;2026
+1414;Fermento Biologico Zero Lactose;52.70;28;26;04;2026
+1415;Tomate Zero Lactose;74.34;157;20;02;2026
+1416;Cebola Zero Lactose;57.40;80;18;02;2026
+1417;Alho Zero Lactose;13.70;155;20;04;2026
+1418;Batata Zero Lactose;72.52;37;18;02;2026
+1419;Cenoura Zero Lactose;44.88;50;28;04;2026
+1420;Alface Zero Lactose;56.16;101;10;02;2026
+1421;Brocolis Zero Lactose;60.80;196;16;02;2026
+1422;Couve Zero Lactose;72.08;178;18;06;2026
+1423;Espinafre Zero Lactose;28.96;113;04;06;2026
+1424;Abobrinha Zero Lactose;11.88;13;10;02;2026
+1425;Maca Gala Zero Lactose;90.04;98;12;02;2026
+1426;Banana Prata Zero Lactose;86.32;106;06;02;2026
+1427;Laranja Pera Zero Lactose;21.46;32;04;02;2026
+1428;Uva Italia Zero Lactose;57.42;96;18;06;2026
+1429;Pera Williams Zero Lactose;29.06;114;28;02;2026
+1430;Mamao Zero Lactose;6.84;71;02;04;2026
+1431;Melancia Zero Lactose;78.28;84;12;02;2026
+1432;Abacate Zero Lactose;53.20;73;10;04;2026
+1433;Agua Mineral Zero Lactose;78.82;182;20;04;2026
+1434;Refrigerante Cola Zero Lactose;19.36;61;06;06;2026
+1435;Refrigerante Guarana Zero Lactose;58.44;111;04;02;2026
+1436;Suco de Laranja Zero Lactose;18.38;23;02;02;2026
+1437;Suco de Uva Zero Lactose;39.68;155;20;06;2026
+1438;Cerveja Lata Zero Lactose;53.32;164;18;04;2026
+1439;Vinho Tinto Zero Lactose;94.14;29;28;04;2026
+1440;Cafe Moido Zero Lactose;28.78;163;26;02;2026
+1441;Cha Verde Zero Lactose;41.36;53;04;06;2026
+1442;Achocolatado Zero Lactose;95.82;115;22;06;2026
+1443;Sabonete Zero Lactose;72.66;183;28;02;2026
+1444;Shampoo Zero Lactose;56.48;57;22;04;2026
+1445;Condicionador Zero Lactose;64.02;14;08;02;2026
+1446;Pasta de Dente Zero Lactose;83.26;77;02;04;2026
+1447;Detergente Liquido Zero Lactose;41.52;49;12;02;2026
+1448;Desinfetante Zero Lactose;43.30;80;26;06;2026
+1449;Agua Sanitaria Zero Lactose;89.80;39;28;04;2026
+1450;Sabao em Po Zero Lactose;98.34;151;10;04;2026
+1451;Papel Higienico Zero Lactose;41.50;183;04;06;2026
+1452;Toalha de Papel Zero Lactose;58.92;32;22;02;2026
+1453;Guardanapo Zero Lactose;7.32;134;20;06;2026
+1454;Fralda Zero Lactose;27.52;158;14;04;2026
+1455;Absorvente Zero Lactose;4.56;49;12;06;2026
+1456;Cotonete Zero Lactose;49.26;110;18;04;2026
+1457;Chocolate ao Leite Zero Lactose;55.72;136;20;06;2026
+1458;Chocolate Amargo Zero Lactose;83.12;82;18;06;2026
+1459;Sorvete Zero Lactose;16.04;122;28;04;2026
+1460;Geleia Zero Lactose;98.68;183;10;06;2026
+1461;Mel Puro Zero Lactose;27.22;156;28;04;2026
+1462;Ketchup Zero Lactose;5.88;87;22;02;2026
+1463;Mostarda Zero Lactose;37.02;32;04;04;2026
+1464;Maionese Zero Lactose;80.86;88;14;06;2026
+1465;Azeite de Oliva Zero Lactose;94.58;192;28;02;2026
+1466;Vinagre Zero Lactose;9.36;130;18;02;2026
+1467;Molho de Tomate Zero Lactose;43.00;28;20;06;2026
+1468;Extrato de Tomate Zero Lactose;89.98;88;02;04;2026
+1469;Pizza Congelada Zero Lactose;91.72;21;12;02;2026
+1470;Lasanha Congelada Zero Lactose;67.14;22;18;04;2026
+1471;Hamburguer Congelado Zero Lactose;90.80;165;16;02;2026
+1472;Batata Frita Congelada Zero Lactose;65.58;44;18;02;2026
+1473;Nuggets de Frango Zero Lactose;74.70;83;08;02;2026
+1474;Ervilha em Lata Zero Lactose;5.74;143;10;04;2026
+1475;Milho em Lata Zero Lactose;86.68;27;08;02;2026
+1476;Palmito Zero Lactose;80.78;108;10;02;2026
+1477;Cereal Matinal Zero Lactose;31.22;58;24;06;2026
+1478;Aveia Zero Lactose;46.16;63;02;02;2026
+1479;Granola Zero Lactose;35.38;37;04;04;2026
+1480;Arroz Integral;90.66;130;14;06;2026
+1481;Feijao Integral;64.76;176;16;06;2026
+1482;Acucar Integral;32.46;21;22;06;2026
+1483;Sal Integral;61.56;93;20;06;2026
+1484;Oleo de Soja Integral;38.34;94;26;06;2026
+1485;Leite Integral Integral;97.50;154;20;04;2026
+1486;Manteiga Integral;18.76;112;26;06;2026
+1487;Queijo Mussarela Integral;8.94;99;24;02;2026
+1488;Iogurte Natural Integral;58.56;54;10;02;2026
+1489;Cream Cheese Integral;73.90;80;04;02;2026
+1490;Margarina Integral;76.24;98;18;06;2026
+1491;Requeijao Integral;46.74;63;24;06;2026
+1492;Creme de Leite Integral;37.64;129;26;06;2026
+1493;Leite Condensado Integral;14.74;158;16;06;2026
+1494;Frango Inteiro Integral;61.26;35;26;04;2026
+1495;Peito de Frango Integral;21.78;11;16;04;2026
+1496;Carne Moida Integral;12.06;138;10;02;2026
+1497;Picanha Integral;64.58;64;24;02;2026
+1498;Linguica Calabresa Integral;26.80;18;18;06;2026
+1499;Salsicha Integral;90.94;173;04;02;2026
+1500;Presunto Fatiado Integral;72.96;190;06;02;2026
+1501;Bacon Integral;45.44;50;20;06;2026
+1502;File de Salmao Integral;36.04;154;02;02;2026
+1503;Atum em Lata Integral;99.28;192;04;06;2026
+1504;Sardinha em Lata Integral;4.16;172;22;06;2026
+1505;Pao de Forma Integral;56.66;43;16;02;2026
+1506;Biscoito Recheado Integral;92.88;50;14;04;2026
+1507;Biscoito de Agua Integral;43.52;15;20;04;2026
+1508;Macarrao Espaguete Integral;25.28;82;26;04;2026
+1509;Farinha de Trigo Integral;2.56;176;08;06;2026
+1510;Fermento Biologico Integral;46.44;101;18;02;2026
+1511;Tomate Integral;74.04;13;08;04;2026
+1512;Cebola Integral;52.62;178;14;06;2026
+1513;Alho Integral;3.88;188;12;02;2026
+1514;Batata Integral;41.68;111;18;06;2026
+1515;Cenoura Integral;41.98;109;12;04;2026
+1516;Alface Integral;58.86;77;18;04;2026
+1517;Brocolis Integral;42.38;58;20;04;2026
+1518;Couve Integral;53.34;133;22;04;2026
+1519;Espinafre Integral;60.22;177;08;06;2026
+1520;Abobrinha Integral;42.46;72;14;02;2026
+1521;Maca Gala Integral;86.36;147;04;04;2026
+1522;Banana Prata Integral;37.48;192;26;06;2026
+1523;Laranja Pera Integral;95.94;184;12;04;2026
+1524;Uva Italia Integral;62.26;84;18;02;2026
+1525;Pera Williams Integral;40.62;157;20;06;2026
+1526;Mamao Integral;89.60;133;26;06;2026
+1527;Melancia Integral;96.14;148;20;04;2026
+1528;Abacate Integral;44.48;193;06;02;2026
+1529;Agua Mineral Integral;28.10;37;08;02;2026
+1530;Refrigerante Cola Integral;95.52;167;22;06;2026
+1531;Refrigerante Guarana Integral;15.66;89;12;04;2026
+1532;Suco de Laranja Integral;31.76;97;18;06;2026
+1533;Suco de Uva Integral;47.34;88;16;06;2026
+1534;Cerveja Lata Integral;91.08;102;10;02;2026
+1535;Vinho Tinto Integral;20.76;24;20;02;2026
+1536;Cafe Moido Integral;42.20;135;22;02;2026
+1537;Cha Verde Integral;26.52;128;12;04;2026
+1538;Achocolatado Integral;62.56;87;26;04;2026
+1539;Sabonete Integral;94.54;28;24;04;2026
+1540;Shampoo Integral;97.38;173;06;02;2026
+1541;Condicionador Integral;72.50;23;08;04;2026
+1542;Pasta de Dente Integral;72.20;71;06;06;2026
+1543;Detergente Liquido Integral;6.64;104;24;04;2026
+1544;Desinfetante Integral;81.40;25;22;04;2026
+1545;Agua Sanitaria Integral;37.36;123;04;04;2026
+1546;Sabao em Po Integral;52.34;121;26;04;2026
+1547;Papel Higienico Integral;10.60;156;12;06;2026
+1548;Toalha de Papel Integral;15.94;153;14;06;2026
+1549;Guardanapo Integral;59.94;74;04;04;2026
+1550;Fralda Integral;93.34;79;10;06;2026
+1551;Absorvente Integral;79.02;197;04;06;2026
+1552;Cotonete Integral;55.68;112;02;06;2026
+1553;Chocolate ao Leite Integral;28.30;172;08;06;2026
+1554;Chocolate Amargo Integral;88.18;86;26;06;2026
+1555;Sorvete Integral;48.52;28;24;02;2026
+1556;Geleia Integral;41.98;29;18;06;2026
+1557;Mel Puro Integral;82.38;168;28;02;2026
+1558;Ketchup Integral;72.42;92;02;06;2026
+1559;Mostarda Integral;37.76;19;12;06;2026
+1560;Maionese Integral;83.30;10;18;04;2026
+1561;Azeite de Oliva Integral;69.88;115;08;02;2026
+1562;Vinagre Integral;89.82;64;22;06;2026
+1563;Molho de Tomate Integral;92.04;105;08;02;2026
+1564;Extrato de Tomate Integral;30.82;194;06;06;2026
+1565;Pizza Congelada Integral;48.92;150;04;04;2026
+1566;Lasanha Congelada Integral;70.82;128;10;04;2026
+1567;Hamburguer Congelado Integral;16.32;148;20;04;2026
+1568;Batata Frita Congelada Integral;84.88;138;06;04;2026
+1569;Nuggets de Frango Integral;43.00;195;28;06;2026
+1570;Ervilha em Lata Integral;81.58;145;22;04;2026
+1571;Milho em Lata Integral;53.14;35;28;06;2026
+1572;Palmito Integral;23.56;127;10;06;2026
+1573;Cereal Matinal Integral;23.56;187;04;02;2026
+1574;Aveia Integral;33.48;191;02;04;2026
+1575;Granola Integral;46.30;77;20;02;2026
+1576;Arroz 500g;10.70;23;10;04;2026
+1577;Feijao 500g;35.50;154;20;06;2026
+1578;Acucar 500g;36.24;111;22;02;2026
+1579;Sal 500g;99.34;181;08;06;2026
+1580;Oleo de Soja 500g;19.48;112;22;02;2026
+1581;Leite Integral 500g;4.18;48;20;02;2026
+1582;Manteiga 500g;3.34;43;02;02;2026
+1583;Queijo Mussarela 500g;38.00;139;08;06;2026
+1584;Iogurte Natural 500g;74.88;144;10;04;2026
+1585;Cream Cheese 500g;62.52;12;04;04;2026
+1586;Margarina 500g;76.62;31;26;04;2026
+1587;Requeijao 500g;55.84;115;08;02;2026
+1588;Creme de Leite 500g;15.22;136;06;02;2026
+1589;Leite Condensado 500g;65.50;59;24;02;2026
+1590;Frango Inteiro 500g;69.30;196;18;06;2026
+1591;Peito de Frango 500g;59.76;67;16;06;2026
+1592;Carne Moida 500g;85.74;176;18;04;2026
+1593;Picanha 500g;8.18;133;12;04;2026
+1594;Linguica Calabresa 500g;7.52;173;18;04;2026
+1595;Salsicha 500g;9.96;146;12;04;2026
+1596;Presunto Fatiado 500g;63.10;58;02;06;2026
+1597;Bacon 500g;27.70;82;20;04;2026
+1598;File de Salmao 500g;8.82;90;10;06;2026
+1599;Atum em Lata 500g;32.60;162;12;02;2026
+1600;Sardinha em Lata 500g;63.40;129;26;04;2026
+1601;Pao de Forma 500g;47.88;79;08;04;2026
+1602;Biscoito Recheado 500g;50.26;93;14;04;2026
+1603;Biscoito de Agua 500g;44.66;130;04;04;2026
+1604;Macarrao Espaguete 500g;11.22;138;22;06;2026
+1605;Farinha de Trigo 500g;28.26;132;20;06;2026
+1606;Fermento Biologico 500g;87.36;25;18;06;2026
+1607;Tomate 500g;42.16;37;20;02;2026
+1608;Cebola 500g;38.20;142;06;02;2026
+1609;Alho 500g;57.02;160;20;02;2026
+1610;Batata 500g;88.70;185;10;06;2026
+1611;Cenoura 500g;43.54;87;20;06;2026
+1612;Alface 500g;88.46;104;06;04;2026
+1613;Brocolis 500g;21.60;17;04;06;2026
+1614;Couve 500g;83.38;96;06;02;2026
+1615;Espinafre 500g;98.24;86;20;02;2026
+1616;Abobrinha 500g;31.26;182;02;04;2026
+1617;Maca Gala 500g;78.76;53;20;02;2026
+1618;Banana Prata 500g;26.64;131;10;04;2026
+1619;Laranja Pera 500g;28.80;179;12;02;2026
+1620;Uva Italia 500g;72.44;195;02;04;2026
+1621;Pera Williams 500g;91.02;36;16;06;2026
+1622;Mamao 500g;42.32;90;18;02;2026
+1623;Melancia 500g;82.76;103;20;02;2026
+1624;Abacate 500g;28.46;88;18;06;2026
+1625;Agua Mineral 500g;25.24;139;08;04;2026
+1626;Refrigerante Cola 500g;41.44;25;26;06;2026
+1627;Refrigerante Guarana 500g;44.30;159;28;02;2026
+1628;Suco de Laranja 500g;69.52;52;26;06;2026
+1629;Suco de Uva 500g;6.66;112;04;06;2026
+1630;Cerveja Lata 500g;62.16;103;06;04;2026
+1631;Vinho Tinto 500g;87.72;149;24;06;2026
+1632;Cafe Moido 500g;77.94;100;26;06;2026
+1633;Cha Verde 500g;54.42;188;08;04;2026
+1634;Achocolatado 500g;89.94;35;10;06;2026
+1635;Sabonete 500g;6.02;91;04;02;2026
+1636;Shampoo 500g;79.34;165;14;06;2026
+1637;Condicionador 500g;12.08;86;20;02;2026
+1638;Pasta de Dente 500g;98.42;173;22;04;2026
+1639;Detergente Liquido 500g;12.34;111;24;02;2026
+1640;Desinfetante 500g;69.08;14;22;06;2026
+1641;Agua Sanitaria 500g;17.68;167;04;06;2026
+1642;Sabao em Po 500g;84.02;21;06;06;2026
+1643;Papel Higienico 500g;46.60;12;24;04;2026
+1644;Toalha de Papel 500g;66.30;154;14;04;2026
+1645;Guardanapo 500g;18.24;143;24;04;2026
+1646;Fralda 500g;3.04;118;18;06;2026
+1647;Absorvente 500g;63.42;187;20;02;2026
+1648;Cotonete 500g;51.02;174;14;06;2026
+1649;Chocolate ao Leite 500g;90.28;130;16;06;2026
+1650;Chocolate Amargo 500g;7.54;42;26;04;2026
+1651;Sorvete 500g;21.26;145;12;06;2026
+1652;Geleia 500g;57.06;187;26;04;2026
+1653;Mel Puro 500g;58.40;114;24;04;2026
+1654;Ketchup 500g;25.04;102;22;06;2026
+1655;Mostarda 500g;53.40;188;16;06;2026
+1656;Maionese 500g;63.68;98;02;06;2026
+1657;Azeite de Oliva 500g;36.82;137;24;04;2026
+1658;Vinagre 500g;65.88;40;22;04;2026
+1659;Molho de Tomate 500g;53.92;47;16;04;2026
+1660;Extrato de Tomate 500g;17.02;157;14;02;2026
+1661;Pizza Congelada 500g;60.82;42;20;04;2026
+1662;Lasanha Congelada 500g;95.42;194;22;04;2026
+1663;Hamburguer Congelado 500g;56.84;45;24;02;2026
+1664;Batata Frita Congelada 500g;85.72;21;06;04;2026
+1665;Nuggets de Frango 500g;49.86;166;04;02;2026
+1666;Ervilha em Lata 500g;74.92;31;10;04;2026
+1667;Milho em Lata 500g;88.58;181;28;06;2026
+1668;Palmito 500g;71.34;42;10;06;2026
+1669;Cereal Matinal 500g;50.04;42;12;02;2026
+1670;Aveia 500g;48.18;177;06;02;2026
+1671;Granola 500g;98.48;22;28;04;2026
+1672;Arroz 1kg;34.54;160;18;06;2026
+1673;Feijao 1kg;54.26;179;16;02;2026
+1674;Acucar 1kg;46.04;61;10;04;2026
+1675;Sal 1kg;64.88;94;12;02;2026
+1676;Oleo de Soja 1kg;43.46;177;26;04;2026
+1677;Leite Integral 1kg;88.56;147;16;06;2026
+1678;Manteiga 1kg;88.38;180;06;02;2026
+1679;Queijo Mussarela 1kg;23.14;165;08;02;2026
+1680;Iogurte Natural 1kg;39.34;134;22;06;2026
+1681;Cream Cheese 1kg;84.32;100;20;06;2026
+1682;Margarina 1kg;43.16;37;06;04;2026
+1683;Requeijao 1kg;41.62;129;24;02;2026
+1684;Creme de Leite 1kg;85.56;71;26;06;2026
+1685;Leite Condensado 1kg;68.68;117;28;02;2026
+1686;Frango Inteiro 1kg;25.00;46;14;02;2026
+1687;Peito de Frango 1kg;87.30;89;20;06;2026
+1688;Carne Moida 1kg;70.56;176;26;06;2026
+1689;Picanha 1kg;56.18;175;04;04;2026
+1690;Linguica Calabresa 1kg;7.18;109;22;02;2026
+1691;Salsicha 1kg;47.22;139;12;04;2026
+1692;Presunto Fatiado 1kg;93.56;185;14;04;2026
+1693;Bacon 1kg;44.18;122;04;06;2026
+1694;File de Salmao 1kg;90.12;96;26;06;2026
+1695;Atum em Lata 1kg;55.58;168;24;02;2026
+1696;Sardinha em Lata 1kg;63.40;75;06;02;2026
+1697;Pao de Forma 1kg;21.44;39;08;04;2026
+1698;Biscoito Recheado 1kg;74.50;141;02;02;2026
+1699;Biscoito de Agua 1kg;79.72;200;12;02;2026
+1700;Macarrao Espaguete 1kg;77.68;88;14;02;2026
+1701;Farinha de Trigo 1kg;93.64;59;20;02;2026
+1702;Fermento Biologico 1kg;48.26;64;26;04;2026
+1703;Tomate 1kg;26.20;88;16;04;2026
+1704;Cebola 1kg;60.78;190;02;04;2026
+1705;Alho 1kg;30.48;53;28;02;2026
+1706;Batata 1kg;44.06;196;02;04;2026
+1707;Cenoura 1kg;9.28;45;16;04;2026
+1708;Alface 1kg;58.36;29;18;04;2026
+1709;Brocolis 1kg;15.08;191;16;02;2026
+1710;Couve 1kg;80.46;162;22;04;2026
+1711;Espinafre 1kg;21.54;147;24;06;2026
+1712;Abobrinha 1kg;50.94;179;06;06;2026
+1713;Maca Gala 1kg;48.12;158;20;04;2026
+1714;Banana Prata 1kg;7.80;198;10;06;2026
+1715;Laranja Pera 1kg;72.26;78;12;02;2026
+1716;Uva Italia 1kg;72.84;41;26;04;2026
+1717;Pera Williams 1kg;73.36;104;24;02;2026
+1718;Mamao 1kg;56.32;59;18;02;2026
+1719;Melancia 1kg;33.60;146;28;04;2026
+1720;Abacate 1kg;6.32;145;06;02;2026
+1721;Agua Mineral 1kg;96.58;66;20;06;2026
+1722;Refrigerante Cola 1kg;32.14;145;18;06;2026
+1723;Refrigerante Guarana 1kg;6.58;169;04;06;2026
+1724;Suco de Laranja 1kg;45.06;73;06;02;2026
+1725;Suco de Uva 1kg;5.74;198;20;06;2026
+1726;Cerveja Lata 1kg;34.36;49;14;06;2026
+1727;Vinho Tinto 1kg;76.04;72;08;02;2026
+1728;Cafe Moido 1kg;39.68;41;14;06;2026
+1729;Cha Verde 1kg;79.92;193;08;04;2026
+1730;Achocolatado 1kg;15.02;87;18;04;2026
+1731;Sabonete 1kg;33.30;29;04;06;2026
+1732;Shampoo 1kg;39.28;115;06;06;2026
+1733;Condicionador 1kg;94.38;174;08;02;2026
+1734;Pasta de Dente 1kg;80.18;140;18;04;2026
+1735;Detergente Liquido 1kg;8.62;76;28;02;2026
+1736;Desinfetante 1kg;52.98;96;06;02;2026
+1737;Agua Sanitaria 1kg;83.12;175;28;06;2026
+1738;Sabao em Po 1kg;4.42;126;22;02;2026
+1739;Papel Higienico 1kg;57.18;172;24;02;2026
+1740;Toalha de Papel 1kg;6.46;198;26;02;2026
+1741;Guardanapo 1kg;67.82;121;04;02;2026
+1742;Fralda 1kg;64.88;157;06;04;2026
+1743;Absorvente 1kg;76.74;47;08;06;2026
+1744;Cotonete 1kg;36.46;154;26;04;2026
+1745;Chocolate ao Leite 1kg;46.98;161;04;02;2026
+1746;Chocolate Amargo 1kg;94.28;12;22;02;2026
+1747;Sorvete 1kg;69.54;130;24;04;2026
+1748;Geleia 1kg;11.86;56;02;04;2026
+1749;Mel Puro 1kg;95.42;90;04;02;2026
+1750;Ketchup 1kg;3.02;168;14;06;2026
+1751;Mostarda 1kg;7.92;38;08;02;2026
+1752;Maionese 1kg;68.64;144;26;02;2026
+1753;Azeite de Oliva 1kg;73.78;49;04;02;2026
+1754;Vinagre 1kg;41.08;186;22;06;2026
+1755;Molho de Tomate 1kg;83.36;62;24;06;2026
+1756;Extrato de Tomate 1kg;59.48;15;10;04;2026
+1757;Pizza Congelada 1kg;20.52;50;08;06;2026
+1758;Lasanha Congelada 1kg;59.20;146;10;02;2026
+1759;Hamburguer Congelado 1kg;90.88;75;16;04;2026
+1760;Batata Frita Congelada 1kg;43.26;102;26;04;2026
+1761;Nuggets de Frango 1kg;69.58;125;04;04;2026
+1762;Ervilha em Lata 1kg;89.30;98;06;02;2026
+1763;Milho em Lata 1kg;81.24;188;20;06;2026
+1764;Palmito 1kg;20.58;82;06;02;2026
+1765;Cereal Matinal 1kg;29.78;189;28;02;2026
+1766;Aveia 1kg;34.54;94;22;06;2026
+1767;Granola 1kg;89.88;91;04;02;2026
+1768;Arroz 2kg;39.84;17;26;06;2026
+1769;Feijao 2kg;75.90;20;16;02;2026
+1770;Acucar 2kg;93.92;102;18;06;2026
+1771;Sal 2kg;67.44;62;16;06;2026
+1772;Oleo de Soja 2kg;23.68;136;26;02;2026
+1773;Leite Integral 2kg;74.76;165;28;06;2026
+1774;Manteiga 2kg;23.16;45;22;04;2026
+1775;Queijo Mussarela 2kg;11.86;14;28;04;2026
+1776;Iogurte Natural 2kg;76.64;176;22;04;2026
+1777;Cream Cheese 2kg;42.12;113;12;02;2026
+1778;Margarina 2kg;7.92;156;22;02;2026
+1779;Requeijao 2kg;15.84;166;08;02;2026
+1780;Creme de Leite 2kg;64.56;119;02;02;2026
+1781;Leite Condensado 2kg;14.88;90;04;02;2026
+1782;Frango Inteiro 2kg;22.18;106;26;04;2026
+1783;Peito de Frango 2kg;54.40;127;28;06;2026
+1784;Carne Moida 2kg;91.22;187;14;04;2026
+1785;Picanha 2kg;46.50;128;12;02;2026
+1786;Linguica Calabresa 2kg;31.82;123;26;04;2026
+1787;Salsicha 2kg;64.94;147;08;02;2026
+1788;Presunto Fatiado 2kg;6.26;161;02;04;2026
+1789;Bacon 2kg;14.00;141;04;06;2026
+1790;File de Salmao 2kg;29.22;76;22;04;2026
+1791;Atum em Lata 2kg;92.20;91;16;02;2026
+1792;Sardinha em Lata 2kg;76.82;15;02;06;2026
+1793;Pao de Forma 2kg;75.16;199;28;06;2026
+1794;Biscoito Recheado 2kg;74.14;87;22;04;2026
+1795;Biscoito de Agua 2kg;56.38;51;24;04;2026
+1796;Macarrao Espaguete 2kg;14.54;161;06;02;2026
+1797;Farinha de Trigo 2kg;20.32;141;16;04;2026
+1798;Fermento Biologico 2kg;42.40;166;06;02;2026
+1799;Tomate 2kg;93.10;47;12;02;2026
+1800;Cebola 2kg;24.04;136;22;06;2026
+1801;Alho 2kg;74.12;165;08;04;2026
+1802;Batata 2kg;89.36;15;22;06;2026
+1803;Cenoura 2kg;48.46;191;24;04;2026
+1804;Alface 2kg;5.48;184;26;04;2026
+1805;Brocolis 2kg;84.90;169;16;04;2026
+1806;Couve 2kg;40.90;66;26;04;2026
+1807;Espinafre 2kg;92.06;175;12;04;2026
+1808;Abobrinha 2kg;76.66;68;22;06;2026
+1809;Maca Gala 2kg;72.82;40;04;06;2026
+1810;Banana Prata 2kg;39.04;117;10;02;2026
+1811;Laranja Pera 2kg;17.06;155;24;02;2026
+1812;Uva Italia 2kg;28.90;167;06;02;2026
+1813;Pera Williams 2kg;4.26;141;20;02;2026
+1814;Mamao 2kg;49.86;113;22;04;2026
+1815;Melancia 2kg;93.66;158;04;02;2026
+1816;Abacate 2kg;50.72;200;10;04;2026
+1817;Agua Mineral 2kg;54.02;160;16;06;2026
+1818;Refrigerante Cola 2kg;99.68;38;02;02;2026
+1819;Refrigerante Guarana 2kg;57.22;158;04;06;2026
+1820;Suco de Laranja 2kg;21.32;154;06;04;2026
+1821;Suco de Uva 2kg;87.22;104;28;04;2026
+1822;Cerveja Lata 2kg;49.46;101;06;04;2026
+1823;Vinho Tinto 2kg;52.66;56;08;02;2026
+1824;Cafe Moido 2kg;97.58;154;10;02;2026
+1825;Cha Verde 2kg;57.88;103;20;02;2026
+1826;Achocolatado 2kg;64.86;136;14;06;2026
+1827;Sabonete 2kg;90.64;94;20;02;2026
+1828;Shampoo 2kg;85.60;164;26;02;2026
+1829;Condicionador 2kg;43.52;67;08;04;2026
+1830;Pasta de Dente 2kg;39.82;67;06;04;2026
+1831;Detergente Liquido 2kg;62.42;93;24;04;2026
+1832;Desinfetante 2kg;34.28;41;06;04;2026
+1833;Agua Sanitaria 2kg;39.00;85;04;02;2026
+1834;Sabao em Po 2kg;14.58;160;22;06;2026
+1835;Papel Higienico 2kg;54.10;124;08;02;2026
+1836;Toalha de Papel 2kg;16.30;132;18;04;2026
+1837;Guardanapo 2kg;4.28;148;16;04;2026
+1838;Fralda 2kg;54.16;144;26;02;2026
+1839;Absorvente 2kg;16.94;40;12;06;2026
+1840;Cotonete 2kg;13.18;182;26;04;2026
+1841;Chocolate ao Leite 2kg;2.80;181;24;02;2026
+1842;Chocolate Amargo 2kg;61.94;146;18;06;2026
+1843;Sorvete 2kg;3.54;22;20;02;2026
+1844;Geleia 2kg;14.78;56;18;04;2026
+1845;Mel Puro 2kg;60.52;89;16;02;2026
+1846;Ketchup 2kg;74.16;69;26;06;2026
+1847;Mostarda 2kg;72.34;23;28;06;2026
+1848;Maionese 2kg;99.36;197;02;06;2026
+1849;Azeite de Oliva 2kg;83.58;171;04;06;2026
+1850;Vinagre 2kg;47.48;13;26;04;2026
+1851;Molho de Tomate 2kg;16.56;42;28;02;2026
+1852;Extrato de Tomate 2kg;97.62;122;10;06;2026
+1853;Pizza Congelada 2kg;42.14;145;04;06;2026
+1854;Lasanha Congelada 2kg;82.00;101;26;02;2026
+1855;Hamburguer Congelado 2kg;87.88;97;28;02;2026
+1856;Batata Frita Congelada 2kg;82.20;151;06;04;2026
+1857;Nuggets de Frango 2kg;11.56;10;28;06;2026
+1858;Ervilha em Lata 2kg;33.26;92;26;06;2026
+1859;Milho em Lata 2kg;16.86;95;12;06;2026
+1860;Palmito 2kg;77.18;50;02;04;2026
+1861;Cereal Matinal 2kg;24.86;173;28;04;2026
+1862;Aveia 2kg;86.38;59;06;04;2026
+1863;Granola 2kg;41.98;143;20;06;2026
+1864;Arroz 5kg;99.26;128;06;04;2026
+1865;Feijao 5kg;9.82;188;20;06;2026
+1866;Acucar 5kg;62.40;171;06;02;2026
+1867;Sal 5kg;66.74;168;16;04;2026
+1868;Oleo de Soja 5kg;23.08;152;10;06;2026
+1869;Leite Integral 5kg;50.88;117;08;02;2026
+1870;Manteiga 5kg;96.50;137;18;04;2026
+1871;Queijo Mussarela 5kg;25.64;140;28;02;2026
+1872;Iogurte Natural 5kg;64.44;128;18;06;2026
+1873;Cream Cheese 5kg;40.32;180;16;04;2026
+1874;Margarina 5kg;74.44;156;18;02;2026
+1875;Requeijao 5kg;9.70;52;28;02;2026
+1876;Creme de Leite 5kg;41.18;83;18;04;2026
+1877;Leite Condensado 5kg;18.22;140;16;06;2026
+1878;Frango Inteiro 5kg;76.60;67;06;06;2026
+1879;Peito de Frango 5kg;80.04;62;16;02;2026
+1880;Carne Moida 5kg;70.84;170;02;02;2026
+1881;Picanha 5kg;50.94;187;20;06;2026
+1882;Linguica Calabresa 5kg;42.02;108;14;04;2026
+1883;Salsicha 5kg;48.86;84;28;06;2026
+1884;Presunto Fatiado 5kg;7.10;46;22;04;2026
+1885;Bacon 5kg;51.28;110;12;02;2026
+1886;File de Salmao 5kg;62.90;147;22;02;2026
+1887;Atum em Lata 5kg;20.98;150;20;04;2026
+1888;Sardinha em Lata 5kg;33.36;123;06;04;2026
+1889;Pao de Forma 5kg;66.40;181;08;06;2026
+1890;Biscoito Recheado 5kg;29.20;59;06;02;2026
+1891;Biscoito de Agua 5kg;12.42;126;20;02;2026
+1892;Macarrao Espaguete 5kg;8.26;182;10;06;2026
+1893;Farinha de Trigo 5kg;65.38;114;12;04;2026
+1894;Fermento Biologico 5kg;92.12;44;14;06;2026
+1895;Tomate 5kg;23.88;155;12;06;2026
+1896;Cebola 5kg;98.14;154;18;04;2026
+1897;Alho 5kg;45.30;118;28;02;2026
+1898;Batata 5kg;9.62;174;06;02;2026
+1899;Cenoura 5kg;94.78;57;24;04;2026
+1900;Alface 5kg;90.26;56;18;04;2026
+1901;Brocolis 5kg;78.70;113;12;06;2026
+1902;Couve 5kg;32.50;116;14;04;2026
+1903;Espinafre 5kg;64.80;29;12;02;2026
+1904;Abobrinha 5kg;83.58;45;26;04;2026
+1905;Maca Gala 5kg;29.66;41;08;06;2026
+1906;Banana Prata 5kg;2.88;185;18;02;2026
+1907;Laranja Pera 5kg;17.92;45;24;04;2026
+1908;Uva Italia 5kg;49.02;60;26;06;2026
+1909;Pera Williams 5kg;43.30;118;12;04;2026
+1910;Mamao 5kg;45.28;178;26;02;2026
+1911;Melancia 5kg;89.42;189;20;04;2026
+1912;Abacate 5kg;65.34;67;22;04;2026
+1913;Agua Mineral 5kg;66.86;21;20;06;2026
+1914;Refrigerante Cola 5kg;81.12;45;26;02;2026
+1915;Refrigerante Guarana 5kg;12.98;40;24;02;2026
+1916;Suco de Laranja 5kg;9.20;120;22;02;2026
+1917;Suco de Uva 5kg;92.16;14;04;04;2026
+1918;Cerveja Lata 5kg;51.74;119;18;02;2026
+1919;Vinho Tinto 5kg;91.10;151;08;04;2026
+1920;Cafe Moido 5kg;31.80;84;06;04;2026
+1921;Cha Verde 5kg;40.66;47;20;06;2026
+1922;Achocolatado 5kg;95.96;97;14;02;2026
+1923;Sabonete 5kg;85.72;178;20;06;2026
+1924;Shampoo 5kg;86.24;159;14;04;2026
+1925;Condicionador 5kg;90.56;96;12;02;2026
+1926;Pasta de Dente 5kg;19.12;49;26;02;2026
+1927;Detergente Liquido 5kg;52.26;21;12;06;2026
+1928;Desinfetante 5kg;14.16;111;18;02;2026
+1929;Agua Sanitaria 5kg;87.22;70;16;06;2026
+1930;Sabao em Po 5kg;49.06;38;22;04;2026
+1931;Papel Higienico 5kg;94.58;120;24;06;2026
+1932;Toalha de Papel 5kg;61.26;163;22;06;2026
+1933;Guardanapo 5kg;65.26;173;12;06;2026
+1934;Fralda 5kg;64.70;152;06;06;2026
+1935;Absorvente 5kg;29.02;25;20;04;2026
+1936;Cotonete 5kg;53.84;138;22;04;2026
+1937;Chocolate ao Leite 5kg;55.56;194;04;04;2026
+1938;Chocolate Amargo 5kg;85.54;146;02;04;2026
+1939;Sorvete 5kg;56.04;73;16;06;2026
+1940;Geleia 5kg;31.26;181;06;04;2026
+1941;Mel Puro 5kg;67.82;60;12;04;2026
+1942;Ketchup 5kg;85.24;91;14;02;2026
+1943;Mostarda 5kg;21.10;171;24;04;2026
+1944;Maionese 5kg;59.52;71;06;06;2026
+1945;Azeite de Oliva 5kg;47.10;125;08;06;2026
+1946;Vinagre 5kg;65.10;31;22;04;2026
+1947;Molho de Tomate 5kg;86.30;26;08;02;2026
+1948;Extrato de Tomate 5kg;70.86;112;14;06;2026
+1949;Pizza Congelada 5kg;90.26;85;28;02;2026
+1950;Lasanha Congelada 5kg;56.06;110;10;06;2026
+1951;Hamburguer Congelado 5kg;95.34;14;04;04;2026
+1952;Batata Frita Congelada 5kg;54.18;195;22;04;2026
+1953;Nuggets de Frango 5kg;71.12;16;04;04;2026
+1954;Ervilha em Lata 5kg;36.36;97;06;06;2026
+1955;Milho em Lata 5kg;24.14;132;16;02;2026
+1956;Palmito 5kg;11.58;153;22;02;2026
+1957;Cereal Matinal 5kg;77.92;156;04;06;2026
+1958;Aveia 5kg;95.94;20;10;04;2026
+1959;Granola 5kg;73.76;81;20;04;2026
+1960;Arroz 200ml;90.46;160;02;02;2026
+1961;Feijao 200ml;25.32;114;12;02;2026
+1962;Acucar 200ml;81.04;14;06;02;2026
+1963;Sal 200ml;48.52;69;20;02;2026
+1964;Oleo de Soja 200ml;52.56;72;02;02;2026
+1965;Leite Integral 200ml;33.54;121;28;02;2026
+1966;Manteiga 200ml;57.68;169;22;04;2026
+1967;Queijo Mussarela 200ml;85.96;42;08;04;2026
+1968;Iogurte Natural 200ml;49.38;164;06;06;2026
+1969;Cream Cheese 200ml;7.76;92;04;02;2026
+1970;Margarina 200ml;79.78;121;02;04;2026
+1971;Requeijao 200ml;34.96;83;20;04;2026
+1972;Creme de Leite 200ml;97.80;192;06;06;2026
+1973;Leite Condensado 200ml;17.26;194;24;04;2026
+1974;Frango Inteiro 200ml;87.08;68;22;02;2026
+1975;Peito de Frango 200ml;88.20;91;12;02;2026
+1976;Carne Moida 200ml;36.62;152;10;02;2026
+1977;Picanha 200ml;50.38;99;12;02;2026
+1978;Linguica Calabresa 200ml;89.28;192;06;06;2026
+1979;Salsicha 200ml;56.20;180;08;06;2026
+1980;Presunto Fatiado 200ml;87.54;25;18;02;2026
+1981;Bacon 200ml;23.10;147;08;04;2026
+1982;File de Salmao 200ml;63.96;191;22;02;2026
+1983;Atum em Lata 200ml;32.38;57;20;06;2026
+1984;Sardinha em Lata 200ml;5.68;66;22;04;2026
+1985;Pao de Forma 200ml;47.52;136;08;06;2026
+1986;Biscoito Recheado 200ml;69.24;119;18;06;2026
+1987;Biscoito de Agua 200ml;76.54;126;24;04;2026
+1988;Macarrao Espaguete 200ml;17.70;123;26;04;2026
+1989;Farinha de Trigo 200ml;50.44;118;28;04;2026
+1990;Fermento Biologico 200ml;89.66;153;18;02;2026
+1991;Tomate 200ml;9.00;58;16;04;2026
+1992;Cebola 200ml;17.78;102;26;04;2026
+1993;Alho 200ml;67.86;41;16;04;2026
+1994;Batata 200ml;77.36;184;26;02;2026
+1995;Cenoura 200ml;36.48;42;28;02;2026
+1996;Alface 200ml;5.08;190;06;04;2026
+1997;Brocolis 200ml;58.56;185;24;02;2026
+1998;Couve 200ml;71.02;194;26;06;2026
+1999;Espinafre 200ml;58.74;16;28;06;2026

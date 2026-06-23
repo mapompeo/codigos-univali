@@ -12,6 +12,7 @@
 ## Sumario
 
 1. [Visao Geral do Projeto](#1-visao-geral-do-projeto)
+1.5. [Conceitos de C Essenciais](#15-conceitos-de-c-essenciais)
 2. [Estrutura de Arquivos](#2-estrutura-de-arquivos)
 3. [Diagrama de Dependencias](#3-diagrama-de-dependencias)
 4. [types.h — Tipos Compartilhados](#4-typesh--tipos-compartilhados)
@@ -38,7 +39,11 @@
 
 ## 1. Visao Geral do Projeto
 
-O **Mercadinho** e um sistema de gerenciamento de supermercado desenvolvido em linguagem C com interface grafica baseada na biblioteca **Raylib**. O sistema foi projetado como trabalho pratico da disciplina de Estrutura de Dados e implementa cinco estruturas de dados classicas:
+O **Mercadinho** e um sistema de gerenciamento de supermercado desenvolvido em linguagem C com interface grafica baseada na biblioteca **Raylib**. O sistema foi projetado como trabalho pratico da disciplina de Estrutura de Dados e implementa cinco estruturas de dados classicas.
+
+**Restricao importante do enunciado:** e proibido o uso de colecoes nativas da linguagem ou arrays estaticos globais de tamanho fixo para as colecoes principais. Toda a logica de ponteiros e gerenciamento de memoria e feita manualmente, conforme detalhado na Secao 20.
+
+Estruturas implementadas:
 
 | Estrutura | Aplicacao |
 |-----------|-----------|
@@ -55,6 +60,164 @@ O **Mercadinho** e um sistema de gerenciamento de supermercado desenvolvido em l
 - **Cadastro de Produtos** com insercao e consulta na tabela hash
 - **Relatorios Gerenciais** com listagem em ordem de ID (in-order da BST) e ranking de faturamento (Quick Sort)
 - **Auditoria** com consulta de venda por ID e exibicao de cupom fiscal detalhado
+
+---
+
+## 1.5. Conceitos de C Essenciais
+
+Esta secao explica os conceitos basicos de C que voce precisa entender para acompanhar o projeto. Se voce nunca viu ponteiros ou `malloc`, comeco por aqui.
+
+---
+
+### 1.5.1 O que e uma `struct`?
+
+Uma `struct` (estrutura) e um tipo de dado que **agrupa varias variaveis relacionadas** em um so pacote.
+
+Imagine que voce quer representar um produto. Sem struct, voce teria variaveis soltas:
+
+```c
+int   codigo;
+char  nome[100];
+float preco;
+```
+
+Com struct, voce junta tudo:
+
+```c
+typedef struct {
+    int   codigo;
+    char  nome[100];
+    float preco;
+} Produto;
+```
+
+Agora `Produto` vira um tipo novo. Voce pode declarar variaveis dele:
+
+```c
+Produto p;
+p.codigo = 1001;
+p.preco  = 25.90f;
+```
+
+O operador `.` (ponto) acessa os campos internos. Quando voce tem um **ponteiro** para struct, usa `->` (seta) no lugar do ponto.
+
+---
+
+### 1.5.2 O que sao ponteiros?
+
+Um **ponteiro** e uma variavel que **guarda um endereco de memoria**, nao um valor direto.
+
+```c
+int  x = 10;   /* x guarda o VALOR 10               */
+int *p = &x;   /* p guarda o ENDERECO onde o 10 esta */
+```
+
+- `&x` significa "endereco de x"
+- `*p` significa "conteudo do endereco que p aponta"
+
+**Por que usar ponteiros?**
+1. Para evitar copiar dados grandes (passar o endereco e mais rapido que copiar a struct inteira)
+2. Para modificar variaveis dentro de funcoes
+3. Para criar estruturas dinamicas (listas, arvores, etc.)
+
+Exemplo:
+
+```c
+void dobrar(int *n) {
+    *n = (*n) * 2;  /* modifica o valor ORIGINAL */
+}
+
+int main() {
+    int a = 5;
+    dobrar(&a);     /* passa o endereco de a */
+    printf("%d", a); /* imprime 10 */
+}
+```
+
+---
+
+### 1.5.3 Ponteiro de ponteiro (`Tipo**`)
+
+Algumas estruturas usam `Tipo**` (ponteiro para ponteiro).
+
+```c
+HashNode **tabela;
+```
+
+Pense assim:
+- `int *p` = ponteiro para um inteiro (p aponta para onde tem um `int`)
+- `int **pp` = ponteiro para um ponteiro de inteiro (pp aponta para onde tem um `int*`)
+
+No caso da Tabela Hash:
+- `tabela` e um **vetor de ponteiros**
+- Cada posicao `tabela[i]` e um ponteiro (`HashNode*`) que aponta para uma lista ligada
+- Para representar esse "vetor de ponteiros", usamos `HashNode**` (ponteiro para o primeiro elemento do vetor)
+
+Na pratica:
+
+```c
+/* calloc aloca um vetor de 1009 ponteiros e zera tudo */
+HashNode **tabela = (HashNode**) calloc(1009, sizeof(HashNode*));
+```
+
+Agora `tabela[0]` e um `HashNode*` (ponteiro para no), `tabela[1]` e outro, etc.
+
+---
+
+### 1.5.4 malloc, calloc e free — Alocacao Dinamica
+
+Normalmente, variaveis ficam na **pilha de memoria** (stack) e sao destruidas quando a funcao termina. Para dados que precisam **sobreviver a funcao** ou ter tamanho variavel, usamos o **monte** (heap).
+
+| Funcao | O que faz |
+|--------|-----------|
+| `malloc(tamanho)` | Aloca `tamanho` bytes no heap e retorna o endereco (lixo na memoria) |
+| `calloc(n, tamanho)` | Aloca `n` elementos de `tamanho` bytes cada e **zera** tudo |
+| `free(ptr)` | Libera a memoria alocada de volta para o sistema |
+
+Exemplo:
+
+```c
+/* aloca espaco para 1 produto */
+Produto *p = (Produto*) malloc(sizeof(Produto));
+if (p == NULL) { /* erro: sem memoria */ }
+
+p->codigo = 2000;
+p->preco  = 15.90f;
+
+/* quando nao precisar mais */
+free(p);   /* p ainda existe, mas o conteudo foi liberado */
+p = NULL;  /* boa pratica: evita usar o ponteiro solto */
+```
+
+**Por que sizeof?** O C precisa saber quantos bytes cada tipo ocupa. `sizeof(Produto)` calcula automaticamente.
+
+**Regra de ouro:** Todo `malloc`/`calloc` deve ter um `free` correspondente. Senao, o programa **vaza memoria** (consome RAM sem devolver).
+
+---
+
+### 1.5.5 O loop principal do Raylib
+
+Raylib e uma biblioteca grafica que abre uma janela e desenha nela. O coracao de qualquer programa Raylib e o **loop principal**:
+
+```c
+while (!WindowShouldClose()) {   /* enquanto o usuario nao fechar a janela */
+    BeginDrawing();               /* comeca a desenhar o frame atual       */
+
+    /* codigo de desenho: textos, botoes, retangulos, etc */
+    DrawText("Ola!", 100, 100, 20, WHITE);
+
+    EndDrawing();                 /* finaliza o frame e mostra na tela     */
+}
+CloseWindow();                    /* fecha a janela                        */
+```
+
+Esse loop roda **60 vezes por segundo** (ou o FPS configurado). Em cada volta (frame):
+1. O mouse e teclado sao lidos
+2. A logica do programa atualiza os dados
+3. O desenho e renderizado na tela
+4. `EndDrawing()` troca o buffer (evita piscar)
+
+No nosso projeto, o loop principal de `main.c` segue esse padrao, mas em vez de desenhar sempre a mesma coisa, ele chama a funcao da tela atual (`tela_menu_desenhar`, `tela_caixa_desenhar`, etc.) dependendo do valor de `app->tela_atual`.
 
 ---
 
@@ -157,6 +320,8 @@ tela_auditoria.c -> tela_auditoria.h, stdio.h, stdlib.h
 
 Define as estruturas de dados fundamentais usadas por todo o sistema, alem de constantes e enumeracoes.
 
+> **Se voce nunca viu `struct` ou `typedef` antes, leia a Secao 1.5.1 antes de continuar.
+
 ### Constantes
 
 ```c
@@ -258,6 +423,8 @@ typedef enum {
 ## 5. hash.h/c — Tabela Hash (Encadeamento Externo)
 
 **Arquivos:** `src/estruturas/hash.h`, `src/estruturas/hash.c`
+
+> **Se voce nunca viu ponteiro de ponteiro (`Tipo**`) antes, leia a Secao 1.5.3 antes de continuar.**
 
 ### Conceito
 
@@ -1199,6 +1366,8 @@ Ajusta o deslocamento vertical baseado no movimento da roda do mouse (`GetMouseW
 
 **Arquivo:** `src/main.c`
 
+> **Se voce nunca viu um loop principal do Raylib antes, leia a Secao 1.5.5 antes de continuar.**
+
 ### Fluxo de Execucao
 
 ```
@@ -1621,6 +1790,8 @@ Abaixo esta o caminho percorrido por uma venda desde a inicializacao do sistema 
 ---
 
 ## 20. Gerenciamento de Memoria
+
+> **Se voce nunca viu `malloc`/`calloc`/`free` antes, leia a Secao 1.5.4 antes de continuar.**
 
 ### Alocacao
 
