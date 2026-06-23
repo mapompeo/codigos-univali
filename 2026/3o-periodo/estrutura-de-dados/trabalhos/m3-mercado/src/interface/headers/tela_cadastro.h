@@ -1,7 +1,7 @@
 #ifndef TELA_CADASTRO_H
 #define TELA_CADASTRO_H
 
-#include "estado.h"
+#include "../../estado.h"
 #include "ui.h"
 
 typedef struct {

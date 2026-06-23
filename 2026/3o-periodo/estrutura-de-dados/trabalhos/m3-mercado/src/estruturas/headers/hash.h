@@ -1,7 +1,7 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include "types.h"
+#include "../../types.h"
 
 /* Nó da lista encadeada (encadeamento externo para colisões) */
 typedef struct HashNode {

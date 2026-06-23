@@ -1,7 +1,7 @@
 #ifndef PILHA_H
 #define PILHA_H
 
-#include "types.h"
+#include "../../types.h"
 
 /* Nó da pilha */
 typedef struct PilhaNode {

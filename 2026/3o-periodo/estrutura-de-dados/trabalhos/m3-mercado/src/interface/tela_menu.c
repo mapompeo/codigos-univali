@@ -1,5 +1,5 @@
-#include "tela_menu.h"
-#include "ui.h"
+#include "headers/tela_menu.h"
+#include "headers/ui.h"
 #include <stdio.h>
 
 /* Botao grande com titulo e subtitulo */

@@ -1,7 +1,7 @@
 #ifndef FILA_H
 #define FILA_H
 
-#include "types.h"
+#include "../../types.h"
 
 /* Nó da fila */
 typedef struct FilaNode {

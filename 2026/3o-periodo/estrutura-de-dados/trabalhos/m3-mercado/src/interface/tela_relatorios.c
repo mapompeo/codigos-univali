@@ -1,5 +1,5 @@
-#include "tela_relatorios.h"
-#include "sort.h"
+#include "headers/tela_relatorios.h"
+#include "../estruturas/headers/sort.h"
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,4 +1,4 @@
-#include "bst.h"
+#include "headers/bst.h"
 #include <stdlib.h>
 
 BST *bst_criar(void) {

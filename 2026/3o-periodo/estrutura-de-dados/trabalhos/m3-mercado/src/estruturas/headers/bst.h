@@ -1,7 +1,7 @@
 #ifndef BST_H
 #define BST_H
 
-#include "types.h"
+#include "../../types.h"
 
 /* No da Arvore Binaria de Busca */
 typedef struct BSTNode {

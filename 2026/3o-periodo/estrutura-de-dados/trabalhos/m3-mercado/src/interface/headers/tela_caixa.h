@@ -1,7 +1,7 @@
 #ifndef TELA_CAIXA_H
 #define TELA_CAIXA_H
 
-#include "estado.h"
+#include "../../estado.h"
 #include "ui.h"
 
 typedef struct {

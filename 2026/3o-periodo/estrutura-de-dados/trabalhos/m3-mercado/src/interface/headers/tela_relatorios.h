@@ -1,7 +1,7 @@
 #ifndef TELA_RELATORIOS_H
 #define TELA_RELATORIOS_H
 
-#include "estado.h"
+#include "../../estado.h"
 #include "ui.h"
 
 typedef enum {

@@ -5,13 +5,13 @@
 
 #include "types.h"
 #include "estado.h"
-#include "dados.h"
-#include "ui.h"
-#include "tela_menu.h"
-#include "tela_cadastro.h"
-#include "tela_caixa.h"
-#include "tela_relatorios.h"
-#include "tela_auditoria.h"
+#include "estruturas/headers/dados.h"
+#include "interface/headers/ui.h"
+#include "interface/headers/tela_menu.h"
+#include "interface/headers/tela_cadastro.h"
+#include "interface/headers/tela_caixa.h"
+#include "interface/headers/tela_relatorios.h"
+#include "interface/headers/tela_auditoria.h"
 
 #define JANELA_W  1280
 #define JANELA_H   720

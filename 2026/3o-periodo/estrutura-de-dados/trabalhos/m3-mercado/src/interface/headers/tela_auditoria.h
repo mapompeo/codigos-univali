@@ -1,7 +1,7 @@
 #ifndef TELA_AUDITORIA_H
 #define TELA_AUDITORIA_H
 
-#include "estado.h"
+#include "../../estado.h"
 #include "ui.h"
 
 typedef struct {

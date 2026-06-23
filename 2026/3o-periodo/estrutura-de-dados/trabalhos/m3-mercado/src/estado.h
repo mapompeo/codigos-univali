@@ -3,10 +3,10 @@
 
 #include <stdbool.h>
 #include "types.h"
-#include "hash.h"
-#include "fila.h"
-#include "pilha.h"
-#include "bst.h"
+#include "estruturas/headers/hash.h"
+#include "estruturas/headers/fila.h"
+#include "estruturas/headers/pilha.h"
+#include "estruturas/headers/bst.h"
 
 /* ------------------------------------------------------------------ */
 /*  Estado global da aplicacao (passado por ponteiro para cada tela)   */

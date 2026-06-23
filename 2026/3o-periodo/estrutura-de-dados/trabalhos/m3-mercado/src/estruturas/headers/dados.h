@@ -1,7 +1,7 @@
 #ifndef DADOS_H
 #define DADOS_H
 
-#include "types.h"
+#include "../../types.h"
 #include "hash.h"
 #include "fila.h"
 
