@@ -5,10 +5,13 @@
 
 **Matheus Pompeo** &nbsp;·&nbsp; Universidade do Vale do Itajaí &nbsp;·&nbsp; Itajaí, SC
 
+[![GitHub](https://img.shields.io/badge/GitHub-mapompeo-181717?style=for-the-badge&logo=github)](https://github.com/mapompeo)
+
 ---
 
 ![Linguagens](https://img.shields.io/badge/Linguagens-C%20%7C%20C%2B%2B%20%7C%20Java%20%7C%20JS%20%7C%20ASM-blue?style=flat-square)
 ![Instituição](https://img.shields.io/badge/Instituição-UNIVALI-orange?style=flat-square)
+![GitHub](https://img.shields.io/badge/GitHub-mapompeo-181717?style=flat-square&logo=github)
 ![Licença](https://img.shields.io/badge/Licença-Aberta-brightgreen?style=flat-square)
 
 </div>
@@ -30,11 +33,9 @@ O repositório serve três propósitos:
 ## Como clonar
 
 ```bash
-git clone https://github.com/seu-usuario/codigos-univali.git
+git clone https://github.com/mapompeo/codigos-univali.git
 cd codigos-univali
 ```
-
-> Substitua `seu-usuario` pelo usuário correto do GitHub onde o repositório está hospedado.
 
 ---
 
@@ -56,6 +57,9 @@ ls
 cd estrutura-de-dados
 ls trabalhos/
 
+# Ver aulas de programação web
+cd programacao-web/aulas
+
 # Abrir um projeto específico no VS Code
 code trabalhos/m3-mercado
 ```
@@ -70,19 +74,26 @@ Para compilar ou executar um projeto, consulte o `README.md` ou o script de buil
 codigos-univali/
 │
 ├── 2025/
-│   ├── 1o periodo/
+│   ├── 1o-periodo/
 │   │   └── algoritmos-e-programacao/    ← Introdução à lógica e programação em C
 │   │
-│   └── 2o periodo/
+│   └── 2o-periodo/
 │       ├── algoritmos-e-programacao/    ← C avançado: vetores, matrizes, ponteiros
 │       └── circuitos-digitais/          ← Álgebra booleana e portas lógicas
 │
 └── 2026/
-    └── 3o-periodo/
-        ├── arquitetura-e-organizacao-de-processadores/   ← Assembly e ISA
-        ├── estrutura-de-dados/                           ← Hash, fila, pilha, BST, AVL
-        ├── programacao-orientada-a-objetos/              ← Java, herança, polimorfismo
-        └── programacao-web/                              ← HTML/CSS/JS, Node.js, Express
+    ├── 3o-periodo/
+    │   ├── arquitetura-e-organizacao-de-processadores/   ← Assembly e ISA
+    │   ├── estrutura-de-dados/                           ← Hash, fila, pilha, BST, AVL
+    │   ├── programacao-orientada-a-objetos/              ← Java, herança, polimorfismo
+    │   └── programacao-web/                              ← HTML/CSS/JS, Node.js, Express
+    │
+    └── 4o-periodo/
+        ├── banco-de-dados/              ← Modelagem, SQL, NoSQL
+        ├── engenharia-de-software-i/    ← Requisitos, UML, processos
+        ├── interacao-humano-computador/ ← UI/UX, usabilidade
+        ├── organizacao-de-computadores/ ← Memória, cache, RISC-V
+        └── sistemas-operacionais/       ← Processos, threads, memória virtual
 ```
 
 Dentro de cada disciplina:

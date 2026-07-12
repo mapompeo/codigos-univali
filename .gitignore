@@ -41,9 +41,15 @@ Testing/
 .DS_Store
 Thumbs.db
 
-# Dependências baixadas por gerenciadores
+# Dependências e libs de terceiros
 node_modules/
 __pycache__/
+lib/
+include/
+uploads/
+*.rar
+*.zip
+*.tar.gz
 
 # Arquivos de backup
 *.bak
