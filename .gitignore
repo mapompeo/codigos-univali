@@ -51,6 +51,9 @@ __pycache__/
 *.orig
 *.save
 
+# IDE
+nbproject/
+
 # Outros
 *.user
 *.sdf
