@@ -411,6 +411,12 @@ Isso exclui, por exemplo, o `addi a1, a1, -1` do `laco.s`: o `bne` lê `a1`.
 > inteiro** (com os nops de dados já inseridos) e só preenche o slot se isso
 > reduzir o total. O slot com `nop` só é mantido quando nenhuma candidata ganha.
 
+> **Nop dentro de laço custa mais.** A lista de exercícios avisa: "um nop fora de um
+> laço é executado uma única vez". Por isso o programa escolhe o slot pelo **custo
+> dinâmico**: cada nop pesa 10 por nível de laço que o contém (um desvio para trás
+> forma o laço), e o tamanho estático só desempata. No `D1` da lista, isso mantém o
+> laço com 6 instruções e deixa os 2 nops de dados para depois dele.
+
 > **Chamadas e retornos ficam sempre com `nop` no slot.** Um `jal ra, função`
 > grava o endereço de retorno **logo depois do slot**, e o `jalr` do retorno cai de
 > volta nele: o slot da chamada executa **duas vezes**. Um `nop` repetido não
@@ -514,8 +520,14 @@ CUSTO
   somente nops ......   17 instrucoes  (+8, +88,9%)
   nops + reordenacao    14 instrucoes  (+5, +55,6%)
 
+  ciclos de uma passada (n + 4, pipeline vazio): 13 original, 21 so nops, 18 reordenado
+  nops contados por volta de laco (cada nivel de laco pesa 10): 62 so nops, 32 reordenado
+
 Comparacao: a reordenacao evitou 3 de 8 nops (37,5%).
 ```
+
+Os ciclos seguem a premissa 7 da lista (n instruções levam n + 4 ciclos com o pipeline
+vazio). A linha dos nops por volta de laço só aparece quando há laço.
 
 ---
 
@@ -585,6 +597,7 @@ build/riscv-hazards tests/data/enunciado.hex -b 0x00400000 -o saida
 | `<arquivo-rom>` | Programa em hexadecimal ou binário (sem argumento, o programa pergunta) |
 | `-b`, `--base <endereço>` | Endereço-base do PC (padrão `0x00000000`) |
 | `-o`, `--out <pasta>` | Pasta dos arquivos de saída (padrão `.`) |
+| `--ecall-regs` | Trata o `ecall` como leitor de `a7` e `a0` e escritor de `a0` (mais conservador; veja as limitações) |
 | `-h`, `--help` | Ajuda |
 
 Executar os testes:
@@ -608,11 +621,16 @@ O que `test_hazards` verifica:
 3. **Otimalidade.** Em 400 trechos retos curtos, uma busca exaustiva independente
    de todas as permutações válidas confirma que o tamanho é sempre o mínimo.
 4. **Codificação de desvios.** Reescreve deslocamentos e decodifica de volta.
-5. **Programas reais de Arquitetura I.** Os `.asm` do grupo (presença, multiplicação,
+5. **Lista de exercícios do professor.** Os nove códigos da lista de conflitos (`A1` a
+   `D3`, em `tests/data/lista`) rodam com o número de instruções conferido contra a
+   análise feita à mão (tabela abaixo).
+6. **Programas reais de Arquitetura I.** Os `.asm` do grupo (presença, multiplicação,
    resto, número primo com chamadas, soma de dígitos com recursão, Fibonacci, MDC...)
    são montados por `tests/asm.py`, com o mesmo mapa de memória do RARS, e rodam no
    emulador com entradas simuladas. O texto impresso, os registradores (menos `ra`) e
-   a área de dados têm de ser iguais aos do original.
+   a área de dados têm de ser iguais aos do original. O teste roda duas vezes: com o
+   `ecall` sem registradores (padrão) e com `--ecall-regs`, em que o emulador também
+   trata o `ecall` como uma instrução comum do pipeline.
 
 Para gerar os `.hex` a partir de um `.s`:
 
@@ -629,6 +647,20 @@ python tests/asm.py tests/data/laco.s > tests/data/laco.hex
 | `laco` | Laço com desvio para trás | 8 | 13 | 9 |
 | `frente` | Desvio para frente | 7 | 14 | 14 |
 | `enunciado` | Laço no estilo do exemplo do enunciado | 9 | 17 | 14 |
+
+Na lista de exercícios do professor (`tests/data/lista`; nops = instruções a mais):
+
+| Código | Original | Só nops | Reordenado | Observação |
+|---|---:|---:|---:|---|
+| `A1` | 5 | 10 (+5) | 10 | Cadeia curta: nada independente que ajude |
+| `A2` | 5 | 9 (+4) | 9 | O `addi t0` não sobe: escrita após leitura do `add` |
+| `A3` | 5 | 9 (+4) | 8 | O `add zero` (sem efeito) preenche uma espera |
+| `B2` | 5 | 13 (+8) | 13 | Cadeia: só nops resolvem |
+| `C1` | 6 | 14 (+8) | **8** | Intercalar as duas metades: 8 nops viram 2 |
+| `C2` | 5 | 7 (+2) | **5** | As duas instruções do meio preenchem: 0 nops |
+| `D1` | 9 | 16 (+7) | 12 | Laço de 6 instruções; `slli`+`sw` depois do laço pedem 2 nops |
+| `D2` | 5 | 10 (+5) | 10 | O slot só teria instrução de depois do desvio |
+| `D3` | 7 | 8 (+1) | **7** | Uma instrução independente preenche o slot |
 
 E nos programas reais de Arquitetura I (`tests/data/arq1`):
 
@@ -706,8 +738,10 @@ ao PC e muda quando entram nops (o programa avisa). Acessos de tamanhos diferent
 que se sobrepõem, com a mesma base e deslocamentos diferentes, seguem a premissa 6.
 `jal` e `jalr` têm slot de atraso como os desvios condicionais, mas o das chamadas e dos
 retornos sempre leva `nop`. O `ecall` é atendido pelo ambiente (o RARS), em ordem de
-programa, e não conta como leitura ou escrita de registradores, como no decodificador
-da Etapa 1.
+programa, e por padrão não conta como leitura ou escrita de registradores, como no
+decodificador da Etapa 1. Com `--ecall-regs` ele passa a ler `a7` e `a0` e a escrever
+`a0`: nos programas reais isso sobe, por exemplo, o `m2_programa_02` de 72 para 84
+instruções só com nops (veja a tabela de resultados).
 
 ---
 

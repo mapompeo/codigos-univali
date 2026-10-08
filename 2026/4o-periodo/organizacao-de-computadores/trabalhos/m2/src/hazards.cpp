@@ -48,6 +48,25 @@ bool contains(const std::vector<uint8_t>& regs, uint8_t r) {
     return r != 0 && std::find(regs.begin(), regs.end(), r) != regs.end();
 }
 
+// Registradores lidos e escrito por uma instrucao. Segue o decodificador da M1
+// (x0 omitido); o ecall so participa com Options::ecallRegisters.
+struct Effects {
+    std::vector<uint8_t> reads;
+    uint8_t write = 0;
+};
+
+Effects effects(const Instruction& i, bool ecallRegisters) {
+    Effects fx;
+    if (ecallRegisters && i.valid() && i.mnemonic == "ecall") {
+        fx.reads = {17, 10};  // a7 (servico) e a0 (argumento)
+        fx.write = 10;        // a0 (resultado, p.ex. ler inteiro)
+        return fx;
+    }
+    fx.reads = i.readsRegisters();
+    fx.write = writes(i);
+    return fx;
+}
+
 Item makeNop(int block, Tag tag) {
     Item item;
     item.inst = decode(kNopWord, 0);
@@ -63,8 +82,12 @@ Item makeNop(int block, Tag tag) {
 struct Context {
     const std::vector<Instruction>& prog;
     uint32_t base;
+    bool ecall = false;  // Options::ecallRegisters
     std::vector<Block> blocks;
     std::vector<int> blockOf;  // bloco de cada instrucao da entrada
+    std::vector<std::size_t> weight;  // peso dinamico de cada bloco: 10^(lacos que o contem)
+
+    Effects fx(int i) const { return effects(prog[i], ecall); }
 
     int indexOf(uint32_t address) const {
         if (address < base || (address - base) % 4 != 0) return -1;
@@ -76,8 +99,8 @@ struct Context {
 };
 
 // Todo alvo de desvio inicia um bloco e toda instrucao de desvio encerra um.
-Context makeContext(const std::vector<Instruction>& prog, uint32_t base) {
-    Context ctx{prog, base, {}, {}};
+Context makeContext(const std::vector<Instruction>& prog, uint32_t base, const Options& options) {
+    Context ctx{prog, base, options.ecallRegisters, {}, {}, {}};
     const int n = static_cast<int>(prog.size());
     std::vector<bool> leader(static_cast<std::size_t>(n), false);
     if (n > 0) leader[0] = true;
@@ -95,6 +118,23 @@ Context makeContext(const std::vector<Instruction>& prog, uint32_t base) {
         ctx.blocks.back().last = i;
         ctx.blockOf[i] = static_cast<int>(ctx.blocks.size()) - 1;
     }
+
+    // Um desvio para tras (alvo antes ou no proprio desvio) forma um laco: todos os
+    // blocos entre o alvo e o desvio executam varias vezes. Sem informacao de
+    // quantas, cada nivel de aninhamento vale 10 execucoes.
+    std::vector<int> depth(ctx.blocks.size(), 0);
+    for (int i = 0; i < n; ++i) {
+        if (!controlInst(prog[i])) continue;
+        const auto target = prog[i].branchTarget();
+        const int t = target ? ctx.indexOf(*target) : -1;
+        if (t < 0 || t > i) continue;
+        for (int b = ctx.blockOf[t]; b <= ctx.blockOf[i]; ++b) ++depth[b];
+    }
+    for (int d : depth) {
+        std::size_t w = 1;
+        for (int k = 0; k < std::min(d, 3); ++k) w *= 10;
+        ctx.weight.push_back(w);
+    }
     return ctx;
 }
 
@@ -103,6 +143,9 @@ Item makeItem(const Context& ctx, int i) {
     item.inst = ctx.prog[i];
     item.orig = i;
     item.block = ctx.blockOf[i];
+    const Effects fx = ctx.fx(i);
+    item.reads = fx.reads;
+    item.wr = fx.write;
     if (controlInst(item.inst)) {
         if (const auto target = item.inst.branchTarget()) {
             const int t = ctx.indexOf(*target);
@@ -173,15 +216,15 @@ std::vector<DataHazard> findHazards(const std::vector<Item>& items) {
     };
 
     for (int c = 0; c < n; ++c) {
-        for (uint8_t reg : items[c].inst.readsRegisters()) {
+        for (uint8_t reg : items[c].reads) {
             for (int q1 : preds[c]) {
                 const bool crossFirst = leavesSlot(items, q1);
-                if (writes(items[q1].inst) == reg) {
+                if (items[q1].wr == reg) {
                     add(q1, c, reg, 1, crossFirst);
                     continue;  // o produtor mais recente neste caminho e q1
                 }
                 for (int q2 : preds[q1]) {
-                    if (writes(items[q2].inst) == reg) {
+                    if (items[q2].wr == reg) {
                         add(q2, c, reg, 2, crossFirst || leavesSlot(items, q2));
                     }
                 }
@@ -194,8 +237,8 @@ std::vector<DataHazard> findHazards(const std::vector<Item>& items) {
     return found;
 }
 
-Analysis analyze(const std::vector<Instruction>& program, uint32_t baseAddress) {
-    const Context ctx = makeContext(program, baseAddress);
+Analysis analyze(const std::vector<Instruction>& program, uint32_t baseAddress, const Options& options) {
+    const Context ctx = makeContext(program, baseAddress, options);
     Analysis result;
     result.blocks = ctx.blocks;
     for (int i = 0; i < static_cast<int>(program.size()); ++i) result.items.push_back(makeItem(ctx, i));
@@ -243,10 +286,12 @@ bool depends(const Context& ctx, int i, int j) {
     const Instruction& b = ctx.prog[j];
     if (barrierInst(a) || barrierInst(b)) return true;
 
-    const uint8_t wa = writes(a);
-    const uint8_t wb = writes(b);
-    if (contains(b.readsRegisters(), wa)) return true;  // leitura apos escrita
-    if (contains(a.readsRegisters(), wb)) return true;  // escrita apos leitura
+    const Effects fa = ctx.fx(i);
+    const Effects fb = ctx.fx(j);
+    const uint8_t wa = fa.write;
+    const uint8_t wb = fb.write;
+    if (contains(fb.reads, wa)) return true;  // leitura apos escrita
+    if (contains(fa.reads, wb)) return true;  // escrita apos leitura
     if (wa != 0 && wa == wb) return true;               // escrita apos escrita
 
     // Memoria: so ha independencia garantida (premissa 6) com o mesmo
@@ -254,7 +299,7 @@ bool depends(const Context& ctx, int i, int j) {
     if (memInst(a) && memInst(b) && (a.cls == Class::Store || b.cls == Class::Store)) {
         bool distinct = a.rs1 == b.rs1 && a.imm != b.imm;
         for (int k = i; distinct && k < j; ++k) {
-            if (writes(ctx.prog[k]) == *a.rs1) distinct = false;
+            if (ctx.fx(k).write == *a.rs1) distinct = false;
         }
         if (!distinct) return true;
     }
@@ -273,7 +318,7 @@ std::vector<int> slotCandidates(const Context& ctx, int block) {
     // novo, e uma instrucao util movida para la rodaria duas vezes (ou, no
     // retorno, chegaria tarde demais ao codigo que chamou).
     const Instruction& control = ctx.prog[b.last];
-    if (writes(control) != 0 || control.mnemonic == "jalr") return out;
+    if (ctx.fx(b.last).write != 0 || control.mnemonic == "jalr") return out;
     for (int x = b.first; x < b.last; ++x) {
         if (barrierInst(ctx.prog[x])) continue;
         bool free = true;
@@ -292,9 +337,9 @@ public:
     Scheduler(const Context& ctx, const std::vector<int>& nodes, int control)
         : m_(static_cast<int>(nodes.size())) {
         for (int a = 0; a < m_; ++a) {
-            const Instruction& inst = ctx.prog[nodes[a]];
-            writes_.push_back(writes(inst));
-            reads_.push_back(inst.readsRegisters());
+            const Effects fx = ctx.fx(nodes[a]);
+            writes_.push_back(fx.write);
+            reads_.push_back(fx.reads);
             uint32_t mask = 0;
             for (int b = 0; b < a; ++b) {
                 if (nodes[a] == control || depends(ctx, nodes[b], nodes[a])) mask |= 1u << b;
@@ -416,7 +461,7 @@ std::vector<Item> buildItems(const Context& ctx, bool reorder, const std::vector
     std::vector<Item> out;
     auto history = [&](int back) -> uint8_t {
         const int idx = static_cast<int>(out.size()) - back;
-        return idx >= 0 ? writes(out[idx].inst) : 0;
+        return idx >= 0 ? out[idx].wr : 0;
     };
 
     for (int b = 0; b < static_cast<int>(ctx.blocks.size()); ++b) {
@@ -499,14 +544,26 @@ uint32_t withBranchOffset(uint32_t raw, Format format, int32_t offset) {
     return raw;
 }
 
-Corrected correct(const std::vector<Instruction>& program, uint32_t baseAddress, bool reorder) {
-    const Context ctx = makeContext(program, baseAddress);
+Corrected correct(const std::vector<Instruction>& program, uint32_t baseAddress, bool reorder,
+                  const Options& options) {
+    const Context ctx = makeContext(program, baseAddress, options);
     std::vector<int> choice(ctx.blocks.size(), -1);
 
     auto make = [&]() {
         std::vector<Item> items = buildItems(ctx, reorder, choice);
         insertDataNops(items);
         return items;
+    };
+
+    // Custo de uma solucao: primeiro os nops ponderados pelo laco em que estao
+    // (um nop dentro de um laco executa a cada volta), depois o tamanho estatico.
+    using Cost = std::pair<std::size_t, std::size_t>;
+    auto cost = [&](const std::vector<Item>& items) {
+        std::size_t nops = 0;
+        for (const Item& item : items) {
+            if (item.orig < 0) nops += ctx.weight[item.block];
+        }
+        return Cost{nops, items.size()};
     };
 
     // Qual instrucao vai para cada slot? Depende do resto do programa (preencher
@@ -520,18 +577,18 @@ Corrected correct(const std::vector<Instruction>& program, uint32_t baseAddress,
                 if (candidates.empty()) continue;
 
                 const int before = choice[b];
-                std::size_t best = std::numeric_limits<std::size_t>::max();
+                Cost best{std::numeric_limits<std::size_t>::max(), 0};
                 int bestPick = -1;
                 for (int cand : candidates) {  // empate entre candidatas: a primeira
                     choice[b] = cand;
-                    const std::size_t size = make().size();
-                    if (size < best) {
-                        best = size;
+                    const Cost c = cost(make());
+                    if (c < best) {
+                        best = c;
                         bestPick = cand;
                     }
                 }
                 choice[b] = -1;  // slot com nop so vence se for estritamente melhor
-                if (make().size() < best) bestPick = -1;
+                if (cost(make()) < best) bestPick = -1;
                 choice[b] = bestPick;
                 changed = changed || bestPick != before;
             }
@@ -550,6 +607,10 @@ Corrected correct(const std::vector<Instruction>& program, uint32_t baseAddress,
         if (item.tag == Tag::Reordered) ++result.reordered;
     }
     result.residualHazards = findHazards(result.items).size();
+    for (const Item& item : result.items) {
+        result.weightedCost += ctx.weight[item.block];
+        if (item.orig < 0) result.weightedNops += ctx.weight[item.block];
+    }
     return result;
 }
 

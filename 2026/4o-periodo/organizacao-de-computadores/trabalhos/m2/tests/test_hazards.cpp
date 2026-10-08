@@ -59,8 +59,9 @@ public:
     // vista por quem le 3 instrucoes depois). false: maquina ideal.
     Machine(const std::vector<uint32_t>& words, uint32_t base, bool pipeline,
             const std::array<uint32_t, 32>& init, const std::vector<uint32_t>& data = {},
-            const std::vector<int32_t>& inputs = {})
-        : base_(base), visibleAfter_(pipeline ? 3 : 1), pipeline_(pipeline), inputs_(inputs) {
+            const std::vector<int32_t>& inputs = {}, bool strictEcall = false)
+        : base_(base), visibleAfter_(pipeline ? 3 : 1), pipeline_(pipeline), strictEcall_(strictEcall),
+          inputs_(inputs) {
         for (std::size_t i = 0; i < data.size(); ++i) store(kDataBase + 4u * static_cast<uint32_t>(i), data[i], 4);
         for (std::size_t i = 0; i < words.size(); ++i) {
             prog_.push_back(riscv::decode(words[i], base + 4u * static_cast<uint32_t>(i)));
@@ -98,6 +99,7 @@ private:
     uint32_t base_;
     long visibleAfter_;
     bool pipeline_;
+    bool strictEcall_;  // ecall le a7/a0 e escreve a0 como instrucao comum (com defasagem)
     std::vector<Instruction> prog_;
     std::array<std::vector<std::pair<long, uint32_t>>, 32> hist_;
     std::map<uint32_t, uint8_t> mem_;
@@ -159,14 +161,15 @@ private:
         else if (op == "div") w(b == 0 ? 0xFFFFFFFFu : static_cast<uint32_t>(static_cast<int32_t>(a) / static_cast<int32_t>(b)));
         else if (op == "rem") w(b == 0 ? a : static_cast<uint32_t>(static_cast<int32_t>(a) % static_cast<int32_t>(b)));
         else if (op == "ecall") {
-            const uint32_t service = readNow(17);
-            const uint32_t arg = readNow(10);
+            const uint32_t service = strictEcall_ ? read(17, m) : readNow(17);
+            const uint32_t arg = strictEcall_ ? read(10, m) : readNow(10);
             if (service == 1) out_ += std::to_string(static_cast<int32_t>(arg));
             else if (service == 4) {
                 for (uint32_t addr = arg; load(addr, 1) != 0; ++addr) out_ += static_cast<char>(load(addr, 1));
             } else if (service == 11) out_ += static_cast<char>(arg);
             else if (service == 5) {
                 if (inputPos_ >= inputs_.size()) halted_ = true;  // sem mais entrada: encerra
+                else if (strictEcall_) write(10, static_cast<uint32_t>(inputs_[inputPos_++]), m);
                 else hist_[10].push_back({-50, static_cast<uint32_t>(inputs_[inputPos_++])});
             } else if (service == 10 || service == 93) halted_ = true;
         }
@@ -519,8 +522,10 @@ bool sameBehavior(const State& a, const State& b) {
     return true;
 }
 
-void testRealPrograms() {
+void testRealPrograms(bool ecallRegisters) {
     const uint32_t base = 0x00400000;
+    riscv::Options model;
+    model.ecallRegisters = ecallRegisters;
     const std::vector<RealProgram> programs = {
         {"m1_programa_01", {{0, 3, 1, 0, 3, 0, 5, 31, 1}, {2, 4, 1, 2, 4, 1}}},
         {"m1_programa_02", {{6, 7}, {13, 0}, {100, 100}}},
@@ -537,9 +542,9 @@ void testRealPrograms() {
         const auto words = loadHex("arq1/" + p.name + ".hex");
         const auto data = loadHex("arq1/" + p.name + ".data");
         const auto decoded = decodeAll(words, base);
-        const riscv::Analysis analysis = riscv::analyze(decoded, base);
-        const riscv::Corrected nops = riscv::correct(decoded, base, false);
-        const riscv::Corrected reorder = riscv::correct(decoded, base, true);
+        const riscv::Analysis analysis = riscv::analyze(decoded, base, model);
+        const riscv::Corrected nops = riscv::correct(decoded, base, false, model);
+        const riscv::Corrected reorder = riscv::correct(decoded, base, true, model);
         expect(p.name + ": sem conflitos (nops)", nops.residualHazards == 0);
         expect(p.name + ": sem conflitos (reordenacao)", reorder.residualHazards == 0);
         expect(p.name + ": reordenacao nunca pior", reorder.items.size() <= nops.items.size());
@@ -550,8 +555,8 @@ void testRealPrograms() {
             for (int r = 1; r < 32; ++r) init[r] = 0;
             init[2] = 0x7fffeffc;  // sp, como no RARS
             const State ideal = Machine(words, base, false, init, data, input).run();
-            const State a = Machine(nops.words, base, true, init, data, input).run();
-            const State b = Machine(reorder.words, base, true, init, data, input).run();
+            const State a = Machine(nops.words, base, true, init, data, input, ecallRegisters).run();
+            const State b = Machine(reorder.words, base, true, init, data, input, ecallRegisters).run();
             ++run;
             expect(p.name + " #" + std::to_string(run) + ": programa terminou", !ideal.out.empty() || p.name == "vetor");
             expect(p.name + " #" + std::to_string(run) + ": mesmo comportamento (so nops)", sameBehavior(ideal, a),
@@ -565,6 +570,42 @@ void testRealPrograms() {
     }
 }
 
+// ---------------------------------------------------------------------------
+// Lista de exercicios do professor (Arq2_Lista_Conflitos_Pipeline.pdf)
+// ---------------------------------------------------------------------------
+
+struct ListaCase {
+    std::string name;
+    std::size_t original, nops, reorder;  // numero de instrucoes, pela analise feita a mao
+    std::string nota;
+};
+
+void testLista() {
+    const uint32_t base = 0x00400000;
+    const std::vector<ListaCase> cases = {
+        {"a1", 5, 10, 10, "5 nops: sub e sw esperam 2, or espera 1"},
+        {"a2", 5, 9, 9, "4 nops; addi t0 nao pode subir (escrita apos leitura do add)"},
+        {"a3", 5, 9, 8, "4 nops; o add zero (sem efeito) preenche uma espera: 3"},
+        {"b2", 5, 13, 13, "8 nops: cadeia sem nada independente"},
+        {"c1", 6, 14, 8, "8 nops caem para 2 intercalando as duas metades"},
+        {"c2", 5, 7, 5, "2 nops somem: as duas instrucoes do meio preenchem"},
+        {"d1", 9, 16, 12, "laco de 6 (1 nop no slot); slli+sw fora do laco pedem 2"},
+        {"d2", 5, 10, 10, "o slot so teria instrucao de depois do desvio"},
+        {"d3", 7, 8, 7, "uma instrucao independente preenche o slot"},
+    };
+    std::cout << "  caso   original  so nops  reordenado   nota\n";
+    for (const ListaCase& c : cases) {
+        const Outcome o = verify("lista " + c.name, loadHex("lista/" + c.name + ".hex"), base);
+        expect("lista " + c.name + ": instrucoes originais", o.original == c.original);
+        expect("lista " + c.name + ": so nops", o.nops == c.nops,
+               "obtido " + std::to_string(o.nops) + ", esperado " + std::to_string(c.nops));
+        expect("lista " + c.name + ": reordenado", o.reorder == c.reorder,
+               "obtido " + std::to_string(o.reorder) + ", esperado " + std::to_string(c.reorder));
+        std::cout << "  " << std::left << std::setw(7) << c.name << std::right << std::setw(8) << o.original
+                  << std::setw(9) << o.nops << std::setw(12) << o.reorder << "   " << c.nota << '\n';
+    }
+}
+
 }  // namespace
 
 int main() {
@@ -572,8 +613,12 @@ int main() {
     testEncoding();
     std::cout << "== casos conhecidos ==\n";
     testKnownCases();
-    std::cout << "== programas reais de Arquitetura I ==\n";
-    testRealPrograms();
+    std::cout << "== lista de exercicios do professor ==\n";
+    testLista();
+    std::cout << "== programas reais de Arquitetura I (ecall sem registradores, como na M1) ==\n";
+    testRealPrograms(false);
+    std::cout << "== programas reais de Arquitetura I (--ecall-regs: ecall como instrucao comum) ==\n";
+    testRealPrograms(true);
     std::cout << "== fuzz ==\n";
     testFuzz();
     std::cout << '\n' << (checks - failures) << " de " << checks << " verificacoes passaram";

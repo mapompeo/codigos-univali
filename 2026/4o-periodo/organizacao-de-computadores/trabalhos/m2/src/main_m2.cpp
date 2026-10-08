@@ -25,6 +25,7 @@ struct Options {
     std::string inputPath;
     std::string outputDir = ".";
     uint32_t baseAddress = 0x00000000;
+    bool ecallRegisters = false;
 };
 
 void printUsage(const char* program) {
@@ -32,6 +33,8 @@ void printUsage(const char* program) {
               << "Opcoes:\n"
               << "  -b, --base <endereco>   Endereco-base do PC (padrao: 0x00000000)\n"
               << "  -o, --out <pasta>       Pasta dos arquivos de saida (padrao: .)\n"
+              << "      --ecall-regs        Trata o ecall como leitor de a7/a0 e escritor de a0\n"
+              << "                          (padrao: sem registradores, como no decodificador da M1)\n"
               << "  -h, --help              Mostra esta ajuda\n\n"
               << "Sem arquivo-rom, o programa pergunta o caminho. Saidas, para entrada\n"
               << "'prog.hex': prog_nops.hex/.lst e prog_reordenado.hex/.lst.\n";
@@ -62,6 +65,8 @@ bool parseArguments(int argc, char** argv, Options& options, std::string& error)
             }
         } else if (arg == "-o" || arg == "--out") {
             options.outputDir = argv[++i];
+        } else if (arg == "--ecall-regs") {
+            options.ecallRegisters = true;
         } else if (!arg.empty() && arg[0] == '-') {
             error = "opcao desconhecida: " + arg;
             return false;
@@ -207,6 +212,12 @@ void printCost(std::size_t original, const riscv::Corrected& nops, const riscv::
     row("original ..........", original);
     row("somente nops ......", nops.items.size());
     row("nops + reordenacao ", reorder.items.size());
+    std::cout << "\n  ciclos de uma passada (n + 4, pipeline vazio): " << original + 4 << " original, "
+              << nops.items.size() + 4 << " so nops, " << reorder.items.size() + 4 << " reordenado\n";
+    if (nops.weightedNops != nops.nopsData + nops.nopsSlot || reorder.weightedNops != reorder.nopsData + reorder.nopsSlot) {
+        std::cout << "  nops contados por volta de laco (cada nivel de laco pesa 10): " << nops.weightedNops
+                  << " so nops, " << reorder.weightedNops << " reordenado\n";
+    }
 
     const long saved = static_cast<long>(nops.items.size()) - static_cast<long>(reorder.items.size());
     const std::size_t extra = nops.items.size() - original;
@@ -266,14 +277,16 @@ int main(int argc, char** argv) {
     }
     std::cout << '\n';
 
-    const riscv::Analysis analysis = riscv::analyze(program, options.baseAddress);
+    riscv::Options model;
+    model.ecallRegisters = options.ecallRegisters;
+    const riscv::Analysis analysis = riscv::analyze(program, options.baseAddress, model);
     printConflicts(analysis, options.baseAddress);
 
     riscv::Corrected nops;
     riscv::Corrected reorder;
     try {
-        nops = riscv::correct(program, options.baseAddress, false);
-        reorder = riscv::correct(program, options.baseAddress, true);
+        nops = riscv::correct(program, options.baseAddress, false, model);
+        reorder = riscv::correct(program, options.baseAddress, true, model);
     } catch (const std::exception& e) {
         std::cerr << "\nerro ao recalcular enderecos: " << e.what() << '\n';
         return 1;

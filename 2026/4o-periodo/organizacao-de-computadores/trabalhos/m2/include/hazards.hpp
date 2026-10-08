@@ -39,8 +39,18 @@ struct Item {
     bool hasExternal = false;  // destino fora do programa: o endereco absoluto e mantido
     uint32_t externalTarget = 0;
     Tag tag = Tag::Original;
+    std::vector<uint8_t> reads;  // registradores lidos (sem x0), conforme as Options
+    uint8_t wr = 0;              // registrador escrito (0 = nenhum)
 
     bool isControl() const;  // desvio condicional ou salto (jal/jalr)
+};
+
+// Escolhas de modelagem que o enunciado deixa em aberto.
+struct Options {
+    // O decodificador da M1 trata ecall sem registradores (ele e atendido pelo
+    // ambiente). Com true, o ecall passa a ler a7 e a0 e a escrever a0, como um
+    // consumidor/produtor comum do pipeline: mais conservador, com mais nops.
+    bool ecallRegisters = false;
 };
 
 struct Block {
@@ -72,7 +82,7 @@ struct Analysis {
 
 // R1 e R2: blocos basicos, conflitos de dados (inclusive os que atravessam
 // desvios) e slots de atraso do programa original.
-Analysis analyze(const std::vector<Instruction>& program, uint32_t baseAddress);
+Analysis analyze(const std::vector<Instruction>& program, uint32_t baseAddress, const Options& options = {});
 
 struct Corrected {
     std::vector<Item> items;
@@ -82,11 +92,16 @@ struct Corrected {
     std::size_t movedToSlot = 0;
     std::size_t reordered = 0;
     std::size_t residualHazards = 0;  // deve ser 0; verificado sobre o resultado final
+    // Custo dinamico estimado: cada posicao pesa 10^(laços que contem o bloco),
+    // pois um nop dentro de um laco executa a cada volta (dica da lista de exercicios).
+    std::size_t weightedCost = 0;
+    std::size_t weightedNops = 0;
 };
 
 // R3 + R4 (reorder = false) ou R5 (reorder = true); ambos incluem R6.
 // Lanca std::runtime_error se um deslocamento recalculado nao couber na instrucao.
-Corrected correct(const std::vector<Instruction>& program, uint32_t baseAddress, bool reorder);
+Corrected correct(const std::vector<Instruction>& program, uint32_t baseAddress, bool reorder,
+                  const Options& options = {});
 
 // Conflitos de dados remanescentes em uma sequencia (usado para verificar o resultado).
 std::vector<DataHazard> findHazards(const std::vector<Item>& items);
