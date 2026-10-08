@@ -13,6 +13,7 @@
 #include <array>
 #include <cstdint>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <map>
 #include <numeric>
@@ -46,16 +47,21 @@ void expect(const std::string& name, bool ok, const std::string& detail = "") {
 struct State {
     std::array<uint32_t, 32> regs{};
     std::map<uint32_t, uint8_t> mem;
-    bool operator==(const State& o) const { return regs == o.regs && mem == o.mem; }
+    std::string out;  // texto impresso pelas chamadas de sistema (ecall)
+    bool operator==(const State& o) const { return regs == o.regs && mem == o.mem && out == o.out; }
 };
+
+constexpr uint32_t kDataBase = 0x10010000;  // mapa de memoria padrao do RARS
 
 class Machine {
 public:
     // pipeline = true: slot de atraso e leitura defasada (escrita em WB so e
     // vista por quem le 3 instrucoes depois). false: maquina ideal.
     Machine(const std::vector<uint32_t>& words, uint32_t base, bool pipeline,
-            const std::array<uint32_t, 32>& init)
-        : base_(base), visibleAfter_(pipeline ? 3 : 1), pipeline_(pipeline) {
+            const std::array<uint32_t, 32>& init, const std::vector<uint32_t>& data = {},
+            const std::vector<int32_t>& inputs = {})
+        : base_(base), visibleAfter_(pipeline ? 3 : 1), pipeline_(pipeline), inputs_(inputs) {
+        for (std::size_t i = 0; i < data.size(); ++i) store(kDataBase + 4u * static_cast<uint32_t>(i), data[i], 4);
         for (std::size_t i = 0; i < words.size(); ++i) {
             prog_.push_back(riscv::decode(words[i], base + 4u * static_cast<uint32_t>(i)));
         }
@@ -66,7 +72,7 @@ public:
     State run(long maxSteps = 200000) {
         uint32_t pc = base_;
         long m = 0;
-        while (inRange(pc) && m < maxSteps) {
+        while (inRange(pc) && m < maxSteps && !halted_) {
             const Instruction& inst = at(pc);
             const Exec ex = step(inst, pc, m++);
             if (pipeline_ && isControl(inst)) {
@@ -79,6 +85,7 @@ public:
         State s;
         for (int r = 0; r < 32; ++r) s.regs[r] = hist_[r].back().second;
         s.mem = mem_;
+        s.out = out_;
         return s;
     }
 
@@ -94,6 +101,10 @@ private:
     std::vector<Instruction> prog_;
     std::array<std::vector<std::pair<long, uint32_t>>, 32> hist_;
     std::map<uint32_t, uint8_t> mem_;
+    std::vector<int32_t> inputs_;
+    std::size_t inputPos_ = 0;
+    std::string out_;
+    bool halted_ = false;
 
     static bool isControl(const Instruction& i) { return i.cls == Class::Branch || i.cls == Class::Jump; }
     bool inRange(uint32_t pc) const { return pc >= base_ && (pc - base_) / 4 < prog_.size() && pc % 4 == 0; }
@@ -106,6 +117,9 @@ private:
         }
         return hist_[r].front().second;
     }
+    // O ecall e atendido pelo ambiente (o RARS), em ordem de programa: le e
+    // escreve registradores sem passar pelo pipeline, como no decodificador da M1.
+    uint32_t readNow(int r) const { return r == 0 ? 0 : hist_[r].back().second; }
     void write(int r, uint32_t v, long m) {
         if (r != 0) hist_[r].push_back({m, v});
     }
@@ -142,6 +156,20 @@ private:
         else if (op == "or") w(a | b);
         else if (op == "and") w(a & b);
         else if (op == "mul") w(a * b);
+        else if (op == "div") w(b == 0 ? 0xFFFFFFFFu : static_cast<uint32_t>(static_cast<int32_t>(a) / static_cast<int32_t>(b)));
+        else if (op == "rem") w(b == 0 ? a : static_cast<uint32_t>(static_cast<int32_t>(a) % static_cast<int32_t>(b)));
+        else if (op == "ecall") {
+            const uint32_t service = readNow(17);
+            const uint32_t arg = readNow(10);
+            if (service == 1) out_ += std::to_string(static_cast<int32_t>(arg));
+            else if (service == 4) {
+                for (uint32_t addr = arg; load(addr, 1) != 0; ++addr) out_ += static_cast<char>(load(addr, 1));
+            } else if (service == 11) out_ += static_cast<char>(arg);
+            else if (service == 5) {
+                if (inputPos_ >= inputs_.size()) halted_ = true;  // sem mais entrada: encerra
+                else hist_[10].push_back({-50, static_cast<uint32_t>(inputs_[inputPos_++])});
+            } else if (service == 10 || service == 93) halted_ = true;
+        }
         else if (op == "addi") w(a + ui);
         else if (op == "slti") w(static_cast<int32_t>(a) < imm);
         else if (op == "sltiu") w(a < ui);
@@ -462,6 +490,81 @@ void testFuzz() {
     expect("fuzz: o teste tem poder (programas quebram sem correcao)", brokenRaw > programs / 4);
 }
 
+
+// ---------------------------------------------------------------------------
+// Programas reais de Arquitetura I (tests/data/arq1), com entrada simulada
+// ---------------------------------------------------------------------------
+
+struct RealProgram {
+    std::string name;
+    std::vector<std::vector<int32_t>> inputs;  // varios roteiros de entrada
+};
+
+// Mesmo comportamento: texto impresso, registradores (menos ra, que guarda
+// enderecos de retorno e muda de valor quando entram nops) e a area de dados.
+bool sameBehavior(const State& a, const State& b) {
+    if (a.out != b.out) return false;
+    for (int r = 0; r < 32; ++r) {
+        if (r != 1 && a.regs[r] != b.regs[r]) return false;
+    }
+    for (const auto& [addr, byte] : a.mem) {
+        if (addr >= kDataBase && addr < kDataBase + 0x10000) {
+            const auto it = b.mem.find(addr);
+            if (it == b.mem.end() || it->second != byte) return false;
+        }
+    }
+    for (const auto& [addr, byte] : b.mem) {
+        if (addr >= kDataBase && addr < kDataBase + 0x10000 && !a.mem.count(addr)) return false;
+    }
+    return true;
+}
+
+void testRealPrograms() {
+    const uint32_t base = 0x00400000;
+    const std::vector<RealProgram> programs = {
+        {"m1_programa_01", {{0, 3, 1, 0, 3, 0, 5, 31, 1}, {2, 4, 1, 2, 4, 1}}},
+        {"m1_programa_02", {{6, 7}, {13, 0}, {100, 100}}},
+        {"m2_programa_01", {{17, 5}, {4, 9}, {10, 3}}},
+        {"m2_programa_02", {{13}, {15}, {2}, {1}, {97}}},
+        {"m2_programa_03", {{4821}, {7}, {99999}}},
+        {"fibonacci", {{10}, {1}, {20}}},
+        {"mdc", {{48, 18}, {7, 13}}},
+        {"soma", {{3, 4}}},
+        {"vetor", {{}}},
+    };
+    std::cout << "  programa          original  so nops  reordenado   conflitos no original\n";
+    for (const RealProgram& p : programs) {
+        const auto words = loadHex("arq1/" + p.name + ".hex");
+        const auto data = loadHex("arq1/" + p.name + ".data");
+        const auto decoded = decodeAll(words, base);
+        const riscv::Analysis analysis = riscv::analyze(decoded, base);
+        const riscv::Corrected nops = riscv::correct(decoded, base, false);
+        const riscv::Corrected reorder = riscv::correct(decoded, base, true);
+        expect(p.name + ": sem conflitos (nops)", nops.residualHazards == 0);
+        expect(p.name + ": sem conflitos (reordenacao)", reorder.residualHazards == 0);
+        expect(p.name + ": reordenacao nunca pior", reorder.items.size() <= nops.items.size());
+
+        int run = 0;
+        for (const auto& input : p.inputs) {
+            auto init = initialRegisters(1);
+            for (int r = 1; r < 32; ++r) init[r] = 0;
+            init[2] = 0x7fffeffc;  // sp, como no RARS
+            const State ideal = Machine(words, base, false, init, data, input).run();
+            const State a = Machine(nops.words, base, true, init, data, input).run();
+            const State b = Machine(reorder.words, base, true, init, data, input).run();
+            ++run;
+            expect(p.name + " #" + std::to_string(run) + ": programa terminou", !ideal.out.empty() || p.name == "vetor");
+            expect(p.name + " #" + std::to_string(run) + ": mesmo comportamento (so nops)", sameBehavior(ideal, a),
+                   "saida ideal <" + ideal.out + "> obtida <" + a.out + ">");
+            expect(p.name + " #" + std::to_string(run) + ": mesmo comportamento (reordenacao)", sameBehavior(ideal, b),
+                   "saida ideal <" + ideal.out + "> obtida <" + b.out + ">");
+        }
+        std::cout << "  " << std::left << std::setw(18) << p.name << std::right << std::setw(8) << words.size()
+                  << std::setw(9) << nops.items.size() << std::setw(12) << reorder.items.size()
+                  << std::setw(14) << analysis.hazards.size() << '\n';
+    }
+}
+
 }  // namespace
 
 int main() {
@@ -469,6 +572,8 @@ int main() {
     testEncoding();
     std::cout << "== casos conhecidos ==\n";
     testKnownCases();
+    std::cout << "== programas reais de Arquitetura I ==\n";
+    testRealPrograms();
     std::cout << "== fuzz ==\n";
     testFuzz();
     std::cout << '\n' << (checks - failures) << " de " << checks << " verificacoes passaram";

@@ -411,6 +411,14 @@ Isso exclui, por exemplo, o `addi a1, a1, -1` do `laco.s`: o `bne` lê `a1`.
 > inteiro** (com os nops de dados já inseridos) e só preenche o slot se isso
 > reduzir o total. O slot com `nop` só é mantido quando nenhuma candidata ganha.
 
+> **Chamadas e retornos ficam sempre com `nop` no slot.** Um `jal ra, função`
+> grava o endereço de retorno **logo depois do slot**, e o `jalr` do retorno cai de
+> volta nele: o slot da chamada executa **duas vezes**. Um `nop` repetido não
+> faz mal, mas uma instrução útil movida para lá (por exemplo `addi a0, a0, 4`)
+> rodaria duas vezes e mudaria o resultado. No retorno, uma instrução movida
+> chegaria tarde demais ao código que chamou. Só desvios condicionais e `jal zero`
+> (o `j`) recebem instruções movidas.
+
 ### Exemplo: `sem_nops.s` (9 → 15 com nops, 9 com reordenação)
 
 ```
@@ -527,6 +535,7 @@ A Etapa 2 **acrescenta** arquivos à Etapa 1. Nada do decodificador foi alterado
 | `tests/test_hazards.cpp` | **Novo.** Emulador RV32I, casos conhecidos, fuzz e busca exaustiva |
 | `tests/asm.py` | **Novo.** Montador mínimo que gera os `.hex` a partir dos `.s` |
 | `tests/data/*.s` e `*.hex` | **Novo.** Casos de teste: `cadeia`, `laco`, `frente`, `sem_nops`, `enunciado` |
+| `tests/data/arq1/*.s`, `*.hex`, `*.data` | **Novo.** Programas reais de Arquitetura I, já montados (texto e dados) |
 
 ### Estrutura de dados central
 
@@ -599,6 +608,11 @@ O que `test_hazards` verifica:
 3. **Otimalidade.** Em 400 trechos retos curtos, uma busca exaustiva independente
    de todas as permutações válidas confirma que o tamanho é sempre o mínimo.
 4. **Codificação de desvios.** Reescreve deslocamentos e decodifica de volta.
+5. **Programas reais de Arquitetura I.** Os `.asm` do grupo (presença, multiplicação,
+   resto, número primo com chamadas, soma de dígitos com recursão, Fibonacci, MDC...)
+   são montados por `tests/asm.py`, com o mesmo mapa de memória do RARS, e rodam no
+   emulador com entradas simuladas. O texto impresso, os registradores (menos `ra`) e
+   a área de dados têm de ser iguais aos do original.
 
 Para gerar os `.hex` a partir de um `.s`:
 
@@ -615,6 +629,20 @@ python tests/asm.py tests/data/laco.s > tests/data/laco.hex
 | `laco` | Laço com desvio para trás | 8 | 13 | 9 |
 | `frente` | Desvio para frente | 7 | 14 | 14 |
 | `enunciado` | Laço no estilo do exemplo do enunciado | 9 | 17 | 14 |
+
+E nos programas reais de Arquitetura I (`tests/data/arq1`):
+
+| Programa | Original | Só nops | Reordenado | Conflitos no original |
+|---|---:|---:|---:|---:|
+| `m1_programa_01` (registro de presença) | 37 | 62 | 51 | 12 |
+| `m1_programa_02` (multiplicação) | 31 | 43 | 41 | 5 |
+| `m2_programa_01` (resto da divisão) | 32 | 44 | 43 | 5 |
+| `m2_programa_02` (número primo, chamadas) | 45 | 72 | 66 | 10 |
+| `m2_programa_03` (soma de dígitos, recursão) | 43 | 66 | 55 | 6 |
+| `fibonacci` | 29 | 40 | 35 | 5 |
+| `mdc` | 32 | 45 | 39 | 7 |
+| `soma` | 19 | 25 | 22 | 3 |
+| `vetor` | 13 | 27 | 20 | 7 |
 
 ---
 
@@ -676,7 +704,10 @@ com a sequência fixada.
 `jalr` não tem alvo conhecido (o slot é tratado, o destino não). `auipc` é relativo
 ao PC e muda quando entram nops (o programa avisa). Acessos de tamanhos diferentes
 que se sobrepõem, com a mesma base e deslocamentos diferentes, seguem a premissa 6.
-`jal` e `jalr` têm slot de atraso como os desvios condicionais.
+`jal` e `jalr` têm slot de atraso como os desvios condicionais, mas o das chamadas e dos
+retornos sempre leva `nop`. O `ecall` é atendido pelo ambiente (o RARS), em ordem de
+programa, e não conta como leitura ou escrita de registradores, como no decodificador
+da Etapa 1.
 
 ---
 

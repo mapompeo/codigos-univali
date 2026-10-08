@@ -268,6 +268,12 @@ std::vector<int> slotCandidates(const Context& ctx, int block) {
     std::vector<int> out;
     if (!ctx.endsWithControl(block)) return out;
     const Block& b = ctx.blocks[block];
+    // Chamadas (jal/jalr que gravam o endereco de retorno) e retornos (jalr) ficam
+    // com nop no slot: o retorno cai no proprio slot da chamada, que executa de
+    // novo, e uma instrucao util movida para la rodaria duas vezes (ou, no
+    // retorno, chegaria tarde demais ao codigo que chamou).
+    const Instruction& control = ctx.prog[b.last];
+    if (writes(control) != 0 || control.mnemonic == "jalr") return out;
     for (int x = b.first; x < b.last; ++x) {
         if (barrierInst(ctx.prog[x])) continue;
         bool free = true;
